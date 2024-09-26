@@ -20,7 +20,7 @@ coverage
 # Editor directories and files
 .vscode/*
 /baobei/.vscode
-/baobei/vscode/*
+/baobei/.vscode/*
 .vscode/*
 !.vscode/extensions.json
 .idea

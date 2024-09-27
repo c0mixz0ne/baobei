@@ -1,4 +1,4 @@
-import './assets/main.css'
+import './assets/main.scss'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -13,12 +13,14 @@ app.use(router)
 
 // Dynamic titles
 router.afterEach((to) => {
-    if (to.meta.title) {
-        document.title = to.meta.title as string
-    } else {
-        document.title = 'Baobei' // Default
-    }
+  if (to.meta.title) {
+    document.title = to.meta.title as string
+  } else {
+    document.title = 'Baobei' // Default
+  }
 })
 
-
 app.mount('#app')
+
+
+console.log(app);

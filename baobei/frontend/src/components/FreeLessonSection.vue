@@ -2,4 +2,5 @@
     <section>
         Пробный урок
     </section>
+    
 </template>

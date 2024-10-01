@@ -58,6 +58,9 @@
   font-weight: normal;
   outline: 1px solid red;
 }
+html, body{
+  scrollbar-gutter: stable;
+}
 
 body {
   // min-height: 100vh;
@@ -67,6 +70,7 @@ body {
   //   color 0.5s,
   //   background-color 0.5s;
   // line-height: 1.6;
+  
   font-family:
     Inter,
     -apple-system,

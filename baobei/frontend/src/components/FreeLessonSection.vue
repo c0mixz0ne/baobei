@@ -1,6 +1,8 @@
+<script lang="ts" setup>
+import VueCarousel from '../components/VueCarousel.vue'
+</script>
 <template>
-    <section>
-        Пробный урок
+    <section class="carousel">
+        <VueCarousel/>
     </section>
-    
 </template>

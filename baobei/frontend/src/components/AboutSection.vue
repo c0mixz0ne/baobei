@@ -1,7 +1,8 @@
 <template>
     <section class="about">
         <div class="container">
-            <div class="content">
+            <div class="info">
+                <div class="content">
                 <h6>
                     О нас
                 </h6>
@@ -17,6 +18,45 @@
             </div>
             <div class="image">
                 <img src="../assets/images/about.jpg" alt="">
+            </div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="container">
+                <ul>
+                    <li>
+                        <p class="title">
+                            7 лет работы
+                        </p>
+                        <p>
+                            Качественное образование, проверенное временем
+                        </p>
+                    </li>
+                    <li>
+                        <p class="title">
+                            8 преподавателей
+                        </p>
+                        <p>
+                            Лучшие преподаватели, постоянно проходящие повышение квалификации
+                        </p>
+                    </li>
+                    <li>
+                        <p class="title">
+                            Филиал в центре
+                        </p>
+                        <p>
+                            10 минут ходьбы от метро "Площадь Ленина"
+                        </p>
+                    </li>
+                    <li>
+                        <p class="title">
+                            900 довольных учеников
+                        </p>
+                        <p>
+                            Наш главный приоритет — качество образования и комфорт воспитанников
+                        </p>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>

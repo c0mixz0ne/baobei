@@ -43,7 +43,7 @@ export default {
         :style="{ backgroundImage: slides[currentIndex].background }"
       >
         <div class="content">
-          <h1>{{ slides[currentIndex].title }}</h1>
+          <p>{{ slides[currentIndex].title }}</p>
           <p>{{ slides[currentIndex].text }}</p>
         </div>
       </div>

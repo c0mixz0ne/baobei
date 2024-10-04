@@ -111,12 +111,12 @@ a,
 }
 
 .service{
-  h3{
+  h2{
     font-size: 42px;
     text-align: center;
     margin: 30px 0;
   }
-  p.subtitle{
+  h3{
     font-size: 24px;
     text-align: center;
     font-weight: lighter;
@@ -221,7 +221,7 @@ a,
       margin-bottom: 60px;
       .content{
         width: 50%;
-        h6{
+        h2{
           font-size: 42px;
           // font-weight: bold;
           margin-bottom: 28px;
@@ -259,8 +259,8 @@ a,
         border-right: 1px solid $border-pink;
         padding: 10px 30px;
         text-align: center;
-        color:#fff;
-        p.title{
+        color:$white;
+        h4{
           font-size: 17px;
           padding-top: 5px;
           padding-bottom: 20px;
@@ -280,7 +280,7 @@ a,
 .teacher{
   .container{
     padding: 60px 0;
-    h3{
+    h2{
       font-size: 42px;
       line-height: 42px;
       text-align: center;
@@ -300,6 +300,74 @@ a,
 .form{
  background-image:linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(../assets/images/background3.jpg);
  background-size: cover;
+ background-position: center center;
+ padding:70px 0;
+ .container{
+  h2{
+    font-size: 42px;
+    color: $white;
+    text-align: center;
+    max-width: 600px;
+    margin:0 auto;
+    margin-bottom: 40px;
+  }
+  h3{
+    max-width: 600px;
+    margin:0 auto;
+    font-weight: lighter;
+    color: $white;
+    text-align: center;
+  }
+  form{
+    max-width: 800px;
+    margin:0 auto;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    input{
+      color: $black;
+      background-color: $white;
+      border-radius: 0;
+      border: 0;
+      padding:0 20px;
+      line-height: 60px;
+      font-size: 16px;
+      width: 33.3%;
+    }
+    button{
+      margin:0;
+      width: 33.3%;
+    }
+  }
+ }
+}
+
+.news{
+  padding: 50px 0;
+  .container{
+    h2{
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h3{
+      font-size: 24px;
+      text-align: center;
+      font-weight: lighter;
+      margin-bottom: 50px;
+    }
+    .news-list{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 30px;
+      li{
+        width: 33.3%;
+      }
+    }
+  }
 }
 
 .footer{

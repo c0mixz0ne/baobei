@@ -8,9 +8,9 @@
                 Оставьте свои контактные данные, и наш администратор свяжется с вами
             </h3>
             <form action="" method="post">
-                <input type="text">
-                <input type="tel">
-                <button type="submit">Заказать звонок</button>
+                <input placeholder="Ваше имя" type="text">
+                <input placeholder="+7 (999) 999-99-99" type="tel">
+                <button class="button" type="submit">Заказать звонок</button>
             </form>
         </div>
     </section>

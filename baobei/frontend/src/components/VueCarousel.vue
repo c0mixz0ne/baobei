@@ -45,6 +45,7 @@ export default {
         <div class="content">
           <p>{{ slides[currentIndex].title }}</p>
           <p>{{ slides[currentIndex].text }}</p>
+          <button>123</button>
         </div>
       </div>
     </transition>

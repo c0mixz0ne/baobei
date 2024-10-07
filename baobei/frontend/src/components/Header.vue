@@ -9,7 +9,7 @@ import { RouterLink } from 'vue-router'
       </RouterLink>
       <nav>
         <RouterLink to="/">Главная</RouterLink>
-        <RouterLink to="/about">О Нас</RouterLink>
+        <!-- <RouterLink to="/about">О Нас</RouterLink> -->
         <RouterLink to="/login">Войти</RouterLink>
         <!-- <RouterLink to="/notfound">404</RouterLink> -->
       </nav>

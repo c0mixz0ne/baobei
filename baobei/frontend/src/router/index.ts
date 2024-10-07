@@ -9,20 +9,20 @@ const router = createRouter({
       name: 'main',
       component: MainView,
       meta: {
-        title: 'Главная'
+        title: 'Baobei : Главная'
       }
     },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-      meta: {
-        title: 'О Нас'
-      }
-    },
+    // {
+    //   path: '/about',
+    //   name: 'about',
+    //   // route level code-splitting
+    //   // this generates a separate chunk (About.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () => import('../views/AboutView.vue'),
+    //   meta: {
+    //     title: 'Baobei:О Нас'
+    //   }
+    // },
     {
       path: '/login',
       name: 'login',
@@ -31,7 +31,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/LoginView.vue'),
       meta: {
-        title: 'Авторизация'
+        title: 'Baobei : Авторизация'
       }
     },
     {
@@ -42,7 +42,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/ProgramView.vue'),
       meta: {
-        title: 'Образовательные программы'
+        title: 'Baobei:Образовательные программы'
       }
     },
     {
@@ -50,7 +50,7 @@ const router = createRouter({
       name: 'notFound',
       component: () => import('../views/NotFoundView.vue'),
       meta: {
-        title: 'Страница не найдена'
+        title: 'Baobei : Страница не найдена'
       }
     }
   ]

@@ -5,7 +5,7 @@ export default {
       currentIndex: 0,
       intervalId: null,
       slides: [
-        { background: 'url(https://via.placeholder.com/800x600/FF5733/FFFFFF?text=Slide+1)', title: 'Slide 1', text: 'Content for slide 1' },
+        { background: 'url(../assets/images/slider1.jpg)', title: 'Slide 1', text: 'Content for slide 1' },
         { background: 'url(https://via.placeholder.com/800x600/33FF57/FFFFFF?text=Slide+2)', title: 'Slide 2', text: 'Content for slide 2' },
         { background: 'url(https://via.placeholder.com/800x600/3357FF/FFFFFF?text=Slide+3)', title: 'Slide 3', text: 'Content for slide 3' },
       ],

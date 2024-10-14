@@ -2,8 +2,10 @@
 @import './vars.scss';
 // Common elements
 .header {
-  background-color: $pink;
-  height: 150px;
+  background-color: $gray;
+  height: 90px;
+  padding: 10px 0;
+  border-bottom: 1px solid $pink;
   .container {
     display: flex;
     justify-content: space-between;
@@ -16,7 +18,7 @@
         color: $black;
       }
       a.router-link-active{
-        color: $white;
+        color: $pink;
       }
     }
   }
@@ -24,6 +26,10 @@
 
 .footer{
   background-color: $pink;
+  .logo{
+    max-width: 150px;
+    height: 150px;
+  }
 }
 
 .logo {
@@ -61,7 +67,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 90px);
   background-image: linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(../assets/images/background1.jpg);
   background-size: cover;
   background-position: center center;
@@ -71,6 +77,9 @@
     color: $white;
     text-align: center;
     font-size: 52px;
+    span{
+      display: block;
+    }
   }
   h2{
     color: $white;
@@ -257,7 +266,7 @@
       li{
         width:25%;
         // border-left: 1px solid $border-pink;
-        border-right: 1px solid $border-pink;
+        border-right: 2px solid $border-pink;
         padding: 10px 30px;
         text-align: center;
         color:$white;
@@ -395,7 +404,7 @@
       display: flex;
       margin-top: 40px;
       padding: 40px;
-      background-color: $pink;
+      background-color: $gray;
       border: 1px solid $border-pink;
       border-radius: 10px;
       width: 100%;
@@ -413,8 +422,9 @@
         width: 100%;
         padding: 10px;
         border:none;
-        background-color: $white;
+        background-color: $pink;
         cursor: pointer;
+        color: $white;
         
       }
     }

@@ -21,7 +21,7 @@ import MapSection from '../components/MapSection.vue'
     <AboutSection />
     <TeacherSection />
     <FormSection />
-    <NewsSection />
+    <!-- <NewsSection /> -->
     <MapSection />
     <!-- <TheWelcome /> -->
 </template>

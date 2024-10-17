@@ -1,13 +1,15 @@
 <script>
+import slide1 from "../assets/images/slider1.jpg";
+import slide2 from "../assets/images/slider2.jpg";
+
 export default {
   data() {
     return {
       currentIndex: 0,
       intervalId: null,
       slides: [
-        { background: 'url(../assets/images/slider1.jpg)', title: 'Slide 1', text: 'Content for slide 1' },
-        { background: 'url(https://via.placeholder.com/800x600/33FF57/FFFFFF?text=Slide+2)', title: 'Slide 2', text: 'Content for slide 2' },
-        { background: 'url(https://via.placeholder.com/800x600/3357FF/FFFFFF?text=Slide+3)', title: 'Slide 3', text: 'Content for slide 3' },
+        { background: `linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(${slide1})`, title: 'Slide 1', text: 'Content for slide 1' },
+        { background: `linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(${slide2})`, title: 'Slide 2', text: 'Content for slide 2' }
       ],
     };
   },

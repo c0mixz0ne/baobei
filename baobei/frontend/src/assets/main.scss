@@ -26,6 +26,33 @@
 
 .footer{
   background-color: $pink;
+  .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & > *{
+      flex-grow: 1;
+    }
+    & > p{
+      font-size: 14px;
+      color: $white;
+      text-align: center;
+      font-weight: bold;
+    }
+    & > ul {
+      list-style-type: none;
+      justify-content: end;
+      margin: 0;
+      padding: 0;
+      display: flex;
+        li{
+          margin-right: 5px;
+        }
+        & :last-child{
+          margin-right: 0;
+        }
+    }
+  }
   .logo{
     max-width: 150px;
     height: 150px;

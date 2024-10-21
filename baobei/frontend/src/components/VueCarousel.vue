@@ -8,8 +8,8 @@ export default {
       currentIndex: 0,
       intervalId: null,
       slides: [
-        { background: `linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(${slide1})`, title: 'Slide 1', text: 'Content for slide 1' },
-        { background: `linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(${slide2})`, title: 'Slide 2', text: 'Content for slide 2' }
+        { background: `linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(${slide1})`, title: 'Запишись на бесплатный пробный урок', text: 'Запись в группы и на индивидуальные занятия ведется круглогодично' },
+        { background: `linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(${slide2})`, title: 'При покупке абонемента в день пробного занятия скидка на абонемент 10%', text: 'Акция действует с 1 августа по 5 сентября' }
       ],
     };
   },
@@ -26,6 +26,10 @@ export default {
     stopAutoPlay() {
       clearInterval(this.intervalId);
     },
+    buttonClick(){
+      console.log('click');
+      
+    }
   },
   mounted() {
     this.startAutoPlay();
@@ -45,9 +49,9 @@ export default {
         :style="{ backgroundImage: slides[currentIndex].background }"
       >
         <div class="content">
-          <p>{{ slides[currentIndex].title }}</p>
-          <p>{{ slides[currentIndex].text }}</p>
-          <button>123</button>
+          <p class="title">{{ slides[currentIndex].title }}</p>
+          <p class="text">{{ slides[currentIndex].text }}</p>
+          <button class="slide-button" @click="buttonClick">Записаться</button>
         </div>
       </div>
     </transition>
@@ -60,7 +64,7 @@ export default {
 .slider {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -77,31 +81,59 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s ease-in-out;
+  transition: 0.5s ease;
+  .slide-button{
+    background: transparent;
+    border-radius: 30px;
+    font-size: 16px;
+    color: #fff;
+    border: 2px solid #f0d9db;
+    padding: 20px 60px;
+    cursor: pointer;
+  }
 }
 
 .content {
   text-align: center;
-  backdrop-filter: blur(5px); /* Эффект размытия фона */
+  /* Эффект размытия фона */ 
+  /* backdrop-filter: blur(5px);  */
+  .title{
+    font-size: 42px;
+    max-width: 70%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  .text{
+    margin-bottom: 50px;
+  }
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
-.fade-enter, .fade-leave-to {
+
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 
 .nav-button {
   position: absolute;
   top: 50%;
+  border-radius: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
   border: none;
   padding: 10px;
   cursor: pointer;
   z-index: 1;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .prev {

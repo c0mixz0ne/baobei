@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import TeacherSection from '../components/Teacher-Section.vue'
+import TeacherSection from './TeacherCarousel.vue'
 </script>
 <template>
     <section class="teacher">

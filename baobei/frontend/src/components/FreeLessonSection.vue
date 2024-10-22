@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import VueCarousel from '../components/VueCarousel.vue'
+import VueCarousel from './VueCarousel.vue'
 </script>
 <template>
     <section class="carousel">

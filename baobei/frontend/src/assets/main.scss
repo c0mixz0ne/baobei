@@ -47,10 +47,16 @@
       display: flex;
         li{
           margin-right: 5px;
+          a{
+            img{
+              vertical-align: middle;
+            }
+          }
+          &:last-child{
+            margin-right: 0;
+          }
         }
-        & :last-child{
-          margin-right: 0;
-        }
+
     }
   }
   .logo{
@@ -315,8 +321,9 @@
 }
 
 .teacher{
+  padding: 90px 0;
   .container{
-    padding: 60px 0;
+
     h2{
       font-size: 42px;
       line-height: 42px;

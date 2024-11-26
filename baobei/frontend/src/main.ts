@@ -22,5 +22,4 @@ router.afterEach((to) => {
 
 app.mount('#app')
 
-
 // console.log(app);

@@ -1,9 +1,32 @@
+<template>
+  <div class="carousel">
+    <div class="inner" ref="inner" :style="innerStyles">
+      <div class="slide" v-for="card in cards" :key="card">
+        <div class="card">
+          <div class="image">
+            <img :src="card.photo" alt="Фото" />
+          </div>
+          <div class="content">
+            <p class="name">
+              {{ card.name }}
+            </p>
+            <p class="text">
+              {{ card.text }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="nav-button prev" @click="prev">‹</button>
+    <button class="nav-button next" @click="next">›</button>
+  </div>
+</template>
 <script>
-import teacher0 from "../assets/images/mock.gif"
-import teacher1 from "../assets/images/mock.gif"
-import teacher2 from "../assets/images/mock.gif"
-import teacher3 from "../assets/images/mock.gif"
-import teacher4 from "../assets/images/mock.gif"
+import teacher0 from '../assets/images/mock.gif'
+import teacher1 from '../assets/images/mock.gif'
+import teacher2 from '../assets/images/mock.gif'
+import teacher3 from '../assets/images/mock.gif'
+import teacher4 from '../assets/images/mock.gif'
 
 export default {
   data() {
@@ -12,42 +35,42 @@ export default {
         {
           id: 0,
           photo: teacher0,
-          name: "Имя",
-          text: "Текст"
+          name: 'Имя',
+          text: 'Текст'
         },
         {
           id: 1,
           photo: teacher1,
-          name: "Имя",
-          text: "Текст"
+          name: 'Имя',
+          text: 'Текст'
         },
         {
           id: 2,
           photo: teacher2,
-          name: "Имя",
-          text: "Текст"
+          name: 'Имя',
+          text: 'Текст'
         },
         {
           id: 3,
           photo: teacher3,
-          name: "Имя",
-          text: "Текст"
+          name: 'Имя',
+          text: 'Текст'
         },
         {
           id: 4,
           photo: teacher4,
-          name: "Имя",
-          text: "Текст"
+          name: 'Имя',
+          text: 'Текст'
         },
         {
           id: 5,
           photo: teacher4,
-          name: "Имя",
-          text: "Текст"
+          name: 'Имя',
+          text: 'Текст'
         }
       ],
       innerStyles: {},
-      step: "",
+      step: '',
       transitioning: false
     }
   },
@@ -109,44 +132,20 @@ export default {
     afterTransition(callback) {
       const listener = () => {
         callback()
-        this.$refs.inner.removeEventListener("transitionend", listener)
+        this.$refs.inner.removeEventListener('transitionend', listener)
       }
-      this.$refs.inner.addEventListener("transitionend", listener)
+      this.$refs.inner.addEventListener('transitionend', listener)
     },
 
     resetTranslate() {
       this.innerStyles = {
-        transition: "none",
+        transition: 'none',
         transform: `translateX(-${this.step})`
       }
     }
   }
 }
 </script>
-<template>
-  <div class="carousel">
-    <div class="inner" ref="inner" :style="innerStyles">
-      <div class="slide" v-for="card in cards" :key="card">
-        <div class="card">
-          <div class="image">
-            <img :src="card.photo" alt="Фото" />
-          </div>
-          <div class="content">
-            <p class="name">
-              {{ card.name }}
-            </p>
-            <p class="text">
-              {{ card.text }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="nav-button prev" @click="prev">‹</button>
-    <button class="nav-button next" @click="next">›</button>
-  </div>
-</template>
-
 <style scoped>
 .carousel {
   width: 100%;

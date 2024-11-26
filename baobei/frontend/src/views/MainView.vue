@@ -1,27 +1,25 @@
 <script setup lang="ts">
 // import TheWelcome from '../components/TheWelcome.vue'
 
-import WelcomeSection from '../components/WelcomeSection.vue'
-import RecruitmentSection from '../components/RecruitmentSection.vue'
-import ServiceSection from '../components/ServiceSection.vue'
-import FreeLessonSection from '../components/FreeLessonSection.vue'
-import AboutSection from '../components/AboutSection.vue'
-import TeacherSection from '../components/TeacherSection.vue'
-import FormSection from '../components/FormSection.vue'
-import NewsSection from '../components/NewsSection.vue'
-import MapSection from '../components/MapSection.vue'
-
+import WelcomeComponent from '../components/WelcomeComponent.vue'
+import RecruitmentComponent from '../components/RecruitmentComponent.vue'
+import ServiceComponent from '../components/ServiceComponent.vue'
+import FreeLessonComponent from '../components/FreeLessonComponent.vue'
+import AboutComponent from '../components/AboutComponent.vue'
+import TeacherComponent from '../components/TeacherComponent.vue'
+import FormComponent from '../components/FormComponent.vue'
+import MapComponent from '../components/MapComponent.vue'
 </script>
 
 <template>
-    <WelcomeSection />
-    <RecruitmentSection />
-    <ServiceSection />
-    <FreeLessonSection />
-    <AboutSection />
-    <TeacherSection />
-    <FormSection />
-    <!-- <NewsSection /> -->
-    <MapSection />
-    <!-- <TheWelcome /> -->
+  <WelcomeComponent />
+  <RecruitmentComponent />
+  <ServiceComponent />
+  <FreeLessonComponent />
+  <AboutComponent />
+  <TeacherComponent />
+  <FormComponent />
+  <!-- <NewsSection /> -->
+  <MapComponent />
+  <!-- <TheWelcome /> -->
 </template>

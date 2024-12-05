@@ -7,7 +7,7 @@
     </h2>
   </section>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 .welcome {
   display: flex;
   flex-direction: column;
@@ -34,6 +34,12 @@
     font-size: 20px;
     font-weight: lighter;
     margin-top: 30px;
+  }
+}
+
+@include breakpoint(xs){
+  .welcome{
+    height: calc(100vh - 60px);
   }
 }
 </style>

@@ -13,13 +13,11 @@ import MapComponent from '../components/MapComponent.vue'
 
 <template>
   <WelcomeComponent />
-  <RecruitmentComponent />
+  <!-- <RecruitmentComponent />
   <ServiceComponent />
   <FreeLessonComponent />
   <AboutComponent />
   <TeacherComponent />
   <FormComponent />
-  <!-- <NewsSection /> -->
-  <MapComponent />
-  <!-- <TheWelcome /> -->
+  <MapComponent /> -->
 </template>

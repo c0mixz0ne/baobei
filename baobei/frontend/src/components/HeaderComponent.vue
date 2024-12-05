@@ -48,4 +48,13 @@ import ContainerComponent from './layout/ContainerComponent.vue'
     }
   }
 }
+
+@include breakpoint(xs){
+    .header{
+      height: 60px;
+      .logo{
+        height: 40px;
+      }
+    }
+}
 </style>

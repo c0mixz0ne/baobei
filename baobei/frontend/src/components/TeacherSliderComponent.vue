@@ -1,14 +1,14 @@
 <template>
   <div class="carousel">
     <div class="inner" ref="inner" :style="innerStyles">
-      <div class="slide" v-for="card in cards" :key="card">
+      <div class="slide" v-for="card in cards" :key="card" :style="{width: (viewportWidth / 5) + 'px'}">
         <div class="card">
           <div class="image">
             <img :src="card.photo" alt="Фото" />
           </div>
           <div class="content">
             <p class="name">
-              {{ card.name }}
+              {{ card.name }} {{  viewportWidth }}
             </p>
             <p class="text">
               {{ card.text }}
@@ -22,21 +22,23 @@
   </div>
 </template>
 <script>
-import teacher0 from '../assets/images/mock.gif'
-import teacher1 from '../assets/images/mock.gif'
-import teacher2 from '../assets/images/mock.gif'
-import teacher3 from '../assets/images/mock.gif'
-import teacher4 from '../assets/images/mock.gif'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+import teacher0 from '@/assets/images/mock.gif'
+import teacher1 from '@/assets/images/mock.gif'
+import teacher2 from '@/assets/images/mock.gif'
+import teacher3 from '@/assets/images/mock.gif'
+import teacher4 from '@/assets/images/mock.gif'
 
 export default {
-  data() {
+  data() {  
     return {
       cards: [
         {
           id: 0,
           photo: teacher0,
           name: 'Имя',
-          text: 'Текст'
+          text: 'Текст',
         },
         {
           id: 1,
@@ -71,8 +73,26 @@ export default {
       ],
       innerStyles: {},
       step: '',
-      transitioning: false
+      transitioning: false,
     }
+  },
+
+  setup() {
+    const viewportWidth = ref(window.innerWidth);
+
+    const handleResize = () => {
+      viewportWidth.value = window.innerWidth;
+    };
+
+    onMounted(() => {
+      window.addEventListener('resize', handleResize);
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', handleResize);
+    });
+
+    return { viewportWidth };
   },
 
   mounted() {
@@ -146,7 +166,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .carousel {
   width: 100%;
   max-width: 1320px;
@@ -161,7 +181,8 @@ export default {
 }
 
 .slide {
-  width: calc(1320px / 4);
+  // width: calc(1320px / 4);
+  width: calc(100% / 4);
   padding: 0 10px;
   display: inline-flex;
   /* optional */
@@ -217,6 +238,15 @@ export default {
   }
   &.next {
     right: 20px;
+  }
+}
+
+@include breakpoint(xl){
+  *{
+    outline: 1px solid blue;
+  }
+  .slide{
+    width: calc(100% / 4);
   }
 }
 </style>

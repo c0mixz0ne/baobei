@@ -13,7 +13,7 @@
 </template>
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import ContainerComponent from './layout/ContainerComponent.vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 </script>
 <style lang="scss" scoped>
 .header {

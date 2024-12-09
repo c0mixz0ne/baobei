@@ -23,7 +23,7 @@
   </footer>
 </template>
 <script setup>
-import ContainerComponent from './layout/ContainerComponent.vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 </script>
 <style scoped>
 .footer {

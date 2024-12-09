@@ -12,13 +12,14 @@
   </section>
 </template>
 <script lang="ts" setup>
-import TeacherSliderComponent from './TeacherSliderComponent.vue'
-import ContainerComponent from './layout/ContainerComponent.vue'
+import TeacherSliderComponent from '@/components/TeacherSliderComponent.vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .teacher {
   padding: 90px 0;
   .container {
+    margin-bottom: 40px;
     h2 {
       font-size: 42px;
       line-height: 42px;

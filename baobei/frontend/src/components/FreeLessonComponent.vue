@@ -4,7 +4,7 @@
   </section>
 </template>
 <script lang="ts" setup>
-import MainSliderComponent from './MainSliderComponent.vue'
+import MainSliderComponent from '@/components/MainSliderComponent.vue'
 </script>
 <style scoped>
 .carousel {

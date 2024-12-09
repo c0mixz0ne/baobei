@@ -18,8 +18,8 @@
   </div>
 </template>
 <script>
-import slide1 from '../assets/images/slider1.jpg'
-import slide2 from '../assets/images/slider2.jpg'
+import slide1 from '@/assets/images/slider1.jpg'
+import slide2 from '@/assets/images/slider2.jpg'
 
 export default {
   data() {
@@ -65,7 +65,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .slider {
   position: relative;
   width: 100%;
@@ -101,9 +101,6 @@ export default {
 
 .content {
   text-align: center;
-
-  /* Эффект размытия фона */
-  /* backdrop-filter: blur(5px);  */
   .title {
     font-size: 42px;
     max-width: 70%;
@@ -150,5 +147,30 @@ export default {
 
 .next {
   right: 20px;
+}
+
+@include breakpoint(sm){
+  .slider{
+    height: 80svh;
+  }
+  .content{
+    .title{
+      font-size: 32px;
+    }
+  }
+}
+
+@include breakpoint(xs){
+  .content{
+    .title{
+      font-size: 20px;
+    }
+  }
+  .next{
+    right: 5px;
+  }
+  .prev{
+    left: 5px;
+  }
 }
 </style>

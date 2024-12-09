@@ -18,7 +18,7 @@
           </ul>
         </div>
         <div class="image">
-          <img src="../assets/images/about.jpg" alt="" />
+          <img src="@/assets/images/about.jpg" alt="" />
         </div>
       </div>
     </ContainerComponent>
@@ -47,7 +47,7 @@
   </section>
 </template>
 <script lang="ts" setup>
-import ContainerComponent from './layout/ContainerComponent.vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 </script>
 <style lang="scss" scoped>
 .about {
@@ -65,7 +65,6 @@ import ContainerComponent from './layout/ContainerComponent.vue'
         width: 50%;
         h2 {
           font-size: 42px;
-          // font-weight: bold;
           margin-bottom: 28px;
         }
         ul {
@@ -84,6 +83,8 @@ import ContainerComponent from './layout/ContainerComponent.vue'
         img {
           width: 100%;
           vertical-align: middle;
+          object-fit: contain;
+          height: 100%;
         }
       }
     }
@@ -97,7 +98,6 @@ import ContainerComponent from './layout/ContainerComponent.vue'
       display: flex;
       li {
         width: 25%;
-        // border-left: 1px solid $border-pink;
         border-right: 2px solid var(--border-pink);
         padding: 10px 30px;
         text-align: center;
@@ -114,6 +114,59 @@ import ContainerComponent from './layout/ContainerComponent.vue'
       }
       & :last-child {
         border-right: 0;
+      }
+    }
+  }
+}
+
+@include breakpoint(md){
+  .about{
+    .container{
+      .info{
+        flex-direction: column;
+        gap: 60px;
+        .content{
+          width: 100%;
+        }
+        .image{
+          width: 100%;
+        }
+      }
+    }
+    .list{
+      ul{
+        flex-wrap: wrap;
+        padding: 25px 0;
+        li{
+          width: 50%;
+          border-right: 0;
+          position: relative;
+          margin-bottom: 25px;
+          padding: 10px;
+          &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            bottom:-10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background-color: var(--border-pink);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint(sm){
+  .about{
+    .list{
+      ul{
+        li{
+          width: 100%;
+        }
       }
     }
   }

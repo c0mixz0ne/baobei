@@ -16,7 +16,7 @@
                 Изучение английского языка - это ключ к миру возможностей, знание английского
                 открывает двери к новым знаниям, культурам и возможностям.
               </p>
-              <a class="card-link" href="/program">Подробнее →</a>
+              <RouterLink class="card-link" to="/program">Подробнее →</RouterLink>
             </div>
           </div>
         </li>
@@ -30,7 +30,7 @@
                 обеспечивает ему необходимый запас знаний и навыков для успешного старта в школе и в
                 жизни.
               </p>
-              <a class="card-link" href="/program">Подробнее →</a>
+              <RouterLink class="card-link" to="/program">Подробнее →</RouterLink>
             </div>
           </div>
         </li>
@@ -43,7 +43,7 @@
                 Изучение китайского языка - это широкие возможности для понимания культуры, сознания
                 и сердца народа, который воплощает в себе богатство и мудрость тысячелетий.
               </p>
-              <a class="card-link" href="/program">Подробнее →</a>
+              <RouterLink class="card-link" to="/program">Подробнее →</RouterLink>
             </div>
           </div>
         </li>
@@ -57,7 +57,7 @@
                 воли, настойчивость и умение преодолевать трудности. В нашем центре реализуется
                 подготовка к ОГЭ, ЕГЭ по математике и русскому языку
               </p>
-              <a class="card-link" href="/program">Подробнее →</a>
+              <RouterLink class="card-link" to="/program">Подробнее →</RouterLink>
             </div>
           </div>
         </li>
@@ -66,7 +66,7 @@
   </section>
 </template>
 <script setup>
-import ContainerComponent from './layout/ContainerComponent.vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 </script>
 <style lang="scss" scoped>
 .service {
@@ -86,13 +86,10 @@ import ContainerComponent from './layout/ContainerComponent.vue'
   ul {
     list-style-type: none;
     padding: 0;
-    // display: flex;
-    // flex-wrap: wrap;
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-gap: 40px;
     li {
-      // flex: 0 0 50%;
       width: 100%;
       .card {
         background-color: var(--card-pink);
@@ -131,7 +128,7 @@ import ContainerComponent from './layout/ContainerComponent.vue'
       &:nth-child(1) {
         .card {
           .card-image {
-            background-image: url(../assets/images/service1.jpg);
+            background-image: url(@/assets/images/service1.jpg);
             background-size: cover;
             background-position: center;
           }
@@ -140,7 +137,7 @@ import ContainerComponent from './layout/ContainerComponent.vue'
       &:nth-child(2) {
         .card {
           .card-image {
-            background-image: url(../assets/images/service2.jpg);
+            background-image: url(@/assets/images/service2.jpg);
             background-size: cover;
             background-position: center;
           }
@@ -149,7 +146,7 @@ import ContainerComponent from './layout/ContainerComponent.vue'
       &:nth-child(3) {
         .card {
           .card-image {
-            background-image: url(../assets/images/service3.jpg);
+            background-image: url(@/assets/images/service3.jpg);
             background-size: cover;
             background-position: center;
           }
@@ -158,9 +155,48 @@ import ContainerComponent from './layout/ContainerComponent.vue'
       &:nth-child(4) {
         .card {
           .card-image {
-            background-image: url(../assets/images/service4.jpg);
+            background-image: url(@/assets/images/service4.jpg);
             background-size: cover;
             background-position: center;
+          }
+        }
+      }
+    }
+  }
+}
+@include breakpoint (md){
+  .service {
+    ul{
+      li{
+        .card{
+          .card-content{
+            padding: 10px;
+            p{
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint (sm){
+.service{
+  ul{
+    grid-template-columns: 1fr;
+  }
+}
+}
+
+@include breakpoint (xs){
+  .service{
+    ul{
+      li{
+        .card{
+          flex-direction: column;
+          .card-image{
+            min-height: 300px;
           }
         }
       }

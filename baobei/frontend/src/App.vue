@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Header from './components/HeaderComponent.vue'
-import Main from './components/MainComponent.vue'
-import Footer from './components/FooterComponent.vue'
+import Header from '@/components/HeaderComponent.vue'
+import Main from '@/components/MainComponent.vue'
+import Footer from '@/components/FooterComponent.vue'
 
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
@@ -17,5 +17,5 @@ const isLoginPage = computed(() => {
 <template>
   <Header />
   <Main />
-  <Footer v-if="!isLoginPage" />
+  <!-- <Footer v-if="!isLoginPage" /> -->
 </template>

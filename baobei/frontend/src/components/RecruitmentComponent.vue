@@ -7,7 +7,7 @@
   </section>
 </template>
 <script lang="ts" setup>
-import ButtonComponent from './ButtonComponent.vue'
+import ButtonComponent from '@/components/ButtonComponent.vue'
 const buttonAction = () => {
   console.log('action')
 }
@@ -20,15 +20,13 @@ const buttonAction = () => {
   }
   .image-container {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-      url(../assets/images/background2.jpg);
+      url(@/assets/images/background2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 400px;
     width: 100%;
-    // max-width: 650px;
     display: flex;
-    // flex-direction: column;
     align-items: flex-end;
     justify-content: center;
     padding: 30px;
@@ -41,6 +39,12 @@ const buttonAction = () => {
       margin-top: 30px;
       text-transform: uppercase;
     }
+  }
+}
+
+@include breakpoint(xs){
+  .recruitment{
+    padding: 0;
   }
 }
 </style>

@@ -12,13 +12,13 @@
   </section>
 </template>
 <script setup>
-import ContainerComponent from './layout/ContainerComponent.vue'
-import ButtonComponent from './ButtonComponent.vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
+import ButtonComponent from '@/components/ButtonComponent.vue'
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .form {
   background-image: linear-gradient(rgba(44, 55, 69, 0.8), rgba(44, 55, 69, 0.6)),
-    url(../assets/images/background3.jpg);
+    url(@/assets/images/background3.jpg);
   background-size: cover;
   background-position: center center;
   padding: 70px 0;
@@ -57,6 +57,38 @@ import ButtonComponent from './ButtonComponent.vue'
       button {
         margin: 0;
         width: 33.3%;
+      }
+    }
+  }
+}
+
+@include breakpoint(md){
+    .form{
+      .container{
+        form{
+          flex-direction: column;
+          input{
+            width: 100%;
+            max-width: 500px;
+            margin:0 auto;
+            margin-bottom: 10px;
+          }
+          button{
+            margin:0 auto;
+            width: 100%;
+            min-width: 290px;
+          }
+        }
+      }
+    }
+}
+
+@include breakpoint(xs){
+  .form{
+    padding: 20px 0;
+    .container{
+      h2{
+        font-size: 32px;
       }
     }
   }

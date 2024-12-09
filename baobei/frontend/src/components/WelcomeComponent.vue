@@ -15,11 +15,11 @@
   justify-content: center;
   height: calc(100vh - 90px);
   background-image: linear-gradient(rgba(44, 55, 69, 0.8), rgba(44, 55, 69, 0.6)),
-    url(../assets/images/background1.jpg);
+    url(@/assets/images/background1.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  padding: 30px;
+  padding:0 30px;
   h1 {
     color: var(--white);
     text-align: center;
@@ -37,9 +37,21 @@
   }
 }
 
+@include breakpoint(sm){
+  .welcome{
+    h1{
+      font-size: 42px;
+    }
+  }
+}
+
 @include breakpoint(xs){
   .welcome{
     height: calc(100vh - 60px);
+    padding: 10px;
+    h1{
+      font-size: 32px;
+    }
   }
 }
 </style>

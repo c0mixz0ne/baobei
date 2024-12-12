@@ -1,28 +1,7 @@
-<template>
-  <div class="carousel">
-    <div class="inner" ref="inner" :style="innerStyles">
-      <div class="slide" v-for="card in cards" :key="card" :style="{width: (viewportWidth / 5) + 'px'}">
-        <div class="card">
-          <div class="image">
-            <img :src="card.photo" alt="Фото" />
-          </div>
-          <div class="content">
-            <p class="name">
-              {{ card.name }} {{  viewportWidth }}
-            </p>
-            <p class="text">
-              {{ card.text }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="nav-button prev" @click="prev">‹</button>
-    <button class="nav-button next" @click="next">›</button>
-  </div>
-</template>
-<script>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+<script setup>
+import 'vue3-carousel/dist/carousel.css';
+import ContainerComponent from './layout/ContainerComponent.vue';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 import teacher0 from '@/assets/images/mock.gif'
 import teacher1 from '@/assets/images/mock.gif'
@@ -30,223 +9,96 @@ import teacher2 from '@/assets/images/mock.gif'
 import teacher3 from '@/assets/images/mock.gif'
 import teacher4 from '@/assets/images/mock.gif'
 
-export default {
-  data() {  
-    return {
-      cards: [
-        {
-          id: 0,
-          photo: teacher0,
-          name: 'Имя',
-          text: 'Текст',
-        },
-        {
-          id: 1,
-          photo: teacher1,
-          name: 'Имя',
-          text: 'Текст'
-        },
-        {
-          id: 2,
-          photo: teacher2,
-          name: 'Имя',
-          text: 'Текст'
-        },
-        {
-          id: 3,
-          photo: teacher3,
-          name: 'Имя',
-          text: 'Текст'
-        },
-        {
-          id: 4,
-          photo: teacher4,
-          name: 'Имя',
-          text: 'Текст'
-        },
-        {
-          id: 5,
-          photo: teacher4,
-          name: 'Имя',
-          text: 'Текст'
-        }
-      ],
-      innerStyles: {},
-      step: '',
-      transitioning: false,
-    }
+// Carousel configuration
+const config = {
+  itemsToShow: 1,
+  snapAlign: 'center',
+  gap: 40,
+
+  // 'breakpointMode' determines how the carousel breakpoints are calculated
+  // Acceptable values: 'viewport' (default) | 'carousel'
+  // 'viewport' - breakpoints are based on the viewport width
+  // 'carousel' - breakpoints are based on the carousel width
+  breakpointMode: 'carousel',
+
+  // Breakpoints are mobile-first
+  // Any settings not specified will fall back to the carousel's default settings
+  breakpoints: {
+    // 300px and up
+    300: {
+      itemsToShow: 2,
+      snapAlign: 'center',
+    },
+    // 400px and up
+    400: {
+      itemsToShow: 3,
+      snapAlign: 'start',
+    },
+    // 500px and up
+    500: {
+      itemsToShow: 4,
+      snapAlign: 'start',
+    },
   },
+};
 
-  setup() {
-    const viewportWidth = ref(window.innerWidth);
-
-    const handleResize = () => {
-      viewportWidth.value = window.innerWidth;
-    };
-
-    onMounted(() => {
-      window.addEventListener('resize', handleResize);
-    });
-
-    onBeforeUnmount(() => {
-      window.removeEventListener('resize', handleResize);
-    });
-
-    return { viewportWidth };
+const cards = [
+  {
+    id: 0,
+    photo: teacher0,
+    name: 'Имя',
+    text: 'Текст'
   },
-
-  mounted() {
-    this.setStep()
-    this.resetTranslate()
+  {
+    id: 1,
+    photo: teacher1,
+    name: 'Имя',
+    text: 'Текст'
   },
-
-  methods: {
-    setStep() {
-      const innerWidth = this.$refs.inner.scrollWidth
-      const totalCards = this.cards.length
-      this.step = `${innerWidth / totalCards}px`
-    },
-
-    next() {
-      if (this.transitioning) return
-
-      this.transitioning = true
-
-      this.moveLeft()
-
-      this.afterTransition(() => {
-        const card = this.cards.shift()
-        this.cards.push(card)
-        this.resetTranslate()
-        this.transitioning = false
-      })
-    },
-
-    prev() {
-      if (this.transitioning) return
-
-      this.transitioning = true
-
-      this.moveRight()
-
-      this.afterTransition(() => {
-        const card = this.cards.pop()
-        this.cards.unshift(card)
-        this.resetTranslate()
-        this.transitioning = false
-      })
-    },
-
-    moveLeft() {
-      this.innerStyles = {
-        transform: `translateX(-${this.step}) translateX(-${this.step})`
-      }
-    },
-
-    moveRight() {
-      this.innerStyles = {
-        transform: `translateX(${this.step}) translateX(-${this.step})`
-      }
-    },
-
-    afterTransition(callback) {
-      const listener = () => {
-        callback()
-        this.$refs.inner.removeEventListener('transitionend', listener)
-      }
-      this.$refs.inner.addEventListener('transitionend', listener)
-    },
-
-    resetTranslate() {
-      this.innerStyles = {
-        transition: 'none',
-        transform: `translateX(-${this.step})`
-      }
-    }
+  {
+    id: 2,
+    photo: teacher2,
+    name: 'Имя',
+    text: 'Текст'
+  },
+  {
+    id: 3,
+    photo: teacher3,
+    name: 'Имя',
+    text: 'Текст'
+  },
+  {
+    id: 4,
+    photo: teacher4,
+    name: 'Имя',
+    text: 'Текст'
+  },
+  {
+    id: 5,
+    photo: teacher4,
+    name: 'Имя',
+    text: 'Текст'
   }
-}
+]
 </script>
-<style lang="scss" scoped>
-.carousel {
-  width: 100%;
-  max-width: 1320px;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-}
 
-.inner {
-  transition: transform 0.2s;
-  white-space: nowrap;
-}
+<template>
+  <ContainerComponent>
+    <Carousel v-bind="config">
+      <Slide v-for="card in cards" :key="card">
+        <div class="carousel__item">
+          <img :src="card.photo" alt="">
+        </div>
+      </Slide>
+      <template #addons>
+        <Navigation />
+      </template>
+    </Carousel>
+  </ContainerComponent>
+</template>
 
-.slide {
-  // width: calc(1320px / 4);
-  width: calc(100% / 4);
-  padding: 0 10px;
-  display: inline-flex;
-  /* optional */
-  /* height: 40px; */
-  background-color: transparent;
-  /* background-color: red; */
-  color: white;
-  border-radius: 4px;
-  align-items: center;
-  justify-content: center;
-}
-
-.card {
-  background-color: transparent;
-  width: 100%;
-  .image {
-    img {
-      width: 100%;
-    }
-  }
-  .content {
-    padding: 20px;
-    color: #000;
-    .name {
-      font-size: 14px;
-      font-weight: bold;
-    }
-    .text {
-      font-size: 12px;
-      font-weight: lighter;
-    }
-  }
-}
-
-.nav-button {
-  position: absolute;
-  top: 50%;
-  border-radius: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
-  color: black;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1;
-  display: flex;
-  width: 30px;
-  height: 30px;
-  justify-content: center;
-  align-items: center;
-  &.prev {
-    left: 20px;
-  }
-  &.next {
-    right: 20px;
-  }
-}
-
-@include breakpoint(xl){
-  *{
-    outline: 1px solid blue;
-  }
-  .slide{
-    width: calc(100% / 4);
-  }
+<style scoped>
+.carousel__item{
+  background-color: red;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section>Карта</section>
+    <section>Карта</section>
 </template>
 <style scoped>
 .map {

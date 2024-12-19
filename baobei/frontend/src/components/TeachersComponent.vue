@@ -1,5 +1,5 @@
 <template>
-   <section :class="$style.teachers">
+    <section :class="$style.teachers">
         <ContainerComponent>
             <div :class="$style.carousel">
                 <div :class="$style.inner">
@@ -9,71 +9,69 @@
                 </div>
             </div>
         </ContainerComponent>
-   </section>
+    </section>
 </template>
 <script lang="ts" setup>
-    import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-    import ContainerComponent from './layout/ContainerComponent.vue';
+import ContainerComponent from './layout/ContainerComponent.vue'
 
-    import teacher0 from '@/assets/images/mock.gif'
-    import teacher1 from '@/assets/images/mock.gif'
-    import teacher2 from '@/assets/images/mock.gif'
-    import teacher3 from '@/assets/images/mock.gif'
-    import teacher4 from '@/assets/images/mock.gif'
+import teacher0 from '@/assets/images/mock.gif'
+import teacher1 from '@/assets/images/mock.gif'
+import teacher2 from '@/assets/images/mock.gif'
+import teacher3 from '@/assets/images/mock.gif'
+import teacher4 from '@/assets/images/mock.gif'
 
-    const teachers = [
-        {
-          id: 0,
-          photo: teacher0,
-          name: 'Имя',
-          text: 'Текст',
-        },
-        {
-          id: 1,
-          photo: teacher1,
-          name: 'Имя',
-          text: 'Текст'
-        },
-        {
-          id: 2,
-          photo: teacher2,
-          name: 'Имя',
-          text: 'Текст'
-        },
-        {
-          id: 3,
-          photo: teacher3,
-          name: 'Имя',
-          text: 'Текст'
-        },
-        {
-          id: 4,
-          photo: teacher4,
-          name: 'Имя',
-          text: 'Текст'
-        },
-        {
-          id: 5,
-          photo: teacher4,
-          name: 'Имя',
-          text: 'Текст'
-        }
-    ]
-
+const teachers = [
+    {
+        id: 0,
+        photo: teacher0,
+        name: 'Имя',
+        text: 'Текст'
+    },
+    {
+        id: 1,
+        photo: teacher1,
+        name: 'Имя',
+        text: 'Текст'
+    },
+    {
+        id: 2,
+        photo: teacher2,
+        name: 'Имя',
+        text: 'Текст'
+    },
+    {
+        id: 3,
+        photo: teacher3,
+        name: 'Имя',
+        text: 'Текст'
+    },
+    {
+        id: 4,
+        photo: teacher4,
+        name: 'Имя',
+        text: 'Текст'
+    },
+    {
+        id: 5,
+        photo: teacher4,
+        name: 'Имя',
+        text: 'Текст'
+    }
+]
 </script>
 <style lang="scss" module>
-.teachers{
-    *{
+.teachers {
+    * {
         color: blue;
     }
 }
 
-.inner{
+.inner {
     display: flex;
-    .slide{
+    .slide {
         width: 25%;
     }
 }
-
 </style>

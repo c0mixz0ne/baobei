@@ -8,14 +8,14 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const isLoginPage = computed(() => {
-  console.log(route.path === '/login')
+    console.log(route.path === '/login')
 
-  return route.path === '/login'
+    return route.path === '/login'
 })
 </script>
 
 <template>
-  <Header />
-  <Main />
-  <!-- <Footer v-if="!isLoginPage" /> -->
+    <Header />
+    <Main />
+    <!-- <Footer v-if="!isLoginPage" /> -->
 </template>

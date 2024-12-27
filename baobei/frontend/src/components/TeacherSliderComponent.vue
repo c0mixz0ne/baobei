@@ -11,6 +11,11 @@ import teacher4 from '@/assets/images/mock.jpg'
 
 // Carousel configuration
 const config = {
+	autoplay: 2000,
+	wrapAround: true,
+	pauseAutoplayOnHover: true,
+	mouseDrag: 1,
+	touchDrag: 1,
     itemsToShow: 1,
     snapAlign: 'center',
     gap: 40,
@@ -24,18 +29,18 @@ const config = {
     // Breakpoints are mobile-first
     // Any settings not specified will fall back to the carousel's default settings
     breakpoints: {
-        // 300px and up
-        300: {
+        // 400px and up
+        400: {
             itemsToShow: 2,
             snapAlign: 'center'
         },
-        // 400px and up
-        400: {
+        // 600px and up
+        600: {
             itemsToShow: 3,
             snapAlign: 'start'
         },
-        // 500px and up
-        500: {
+        // 800px and up
+        800: {
             itemsToShow: 4,
             snapAlign: 'start'
         }
@@ -100,12 +105,12 @@ const cards = [
             </Slide>
             <template #addons>
                 <Navigation>
-					<template class="next" #next>
+					<!-- <template class="next" #next>
 						<span> >> </span>
 					</template>
 					<template class="prev" #prev>
 						<span> << </span>
-					</template>
+					</template> -->
 				</Navigation>
             </template>
         </Carousel>
@@ -113,6 +118,7 @@ const cards = [
 </template>
 
 <style lang="scss" scoped>
+
 .carousel__item {
     background-color: var(--slider-background);
     img {

@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import ButtonComponent from '@/components/ButtonComponent.vue'
 const buttonAction = () => {
-    console.log('action')
+    console.log('click')
 }
 </script>
 <style lang="scss" scoped>

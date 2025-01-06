@@ -1,3 +1,6 @@
+<script setup>
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
+</script>
 <template>
     <section class="service">
         <h2>Наши услуги</h2>
@@ -68,9 +71,6 @@
         </ContainerComponent>
     </section>
 </template>
-<script setup>
-import ContainerComponent from '@/components/layout/ContainerComponent.vue'
-</script>
 <style lang="scss" scoped>
 .service {
     h2 {

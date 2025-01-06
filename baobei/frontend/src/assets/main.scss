@@ -1,12 +1,17 @@
 @import '@/assets/_vars.scss';
 
+@font-face {
+    font-family: 'AudioNugget';
+    src: url('../assets/fonts/AudioNugget.ttf');
+  }
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
     margin: 0;
     font-weight: normal;
-    outline: 1px solid red;
+    // outline: 1px solid red;
 }
 
 html,

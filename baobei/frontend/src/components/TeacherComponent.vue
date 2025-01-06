@@ -39,4 +39,10 @@ import ContainerComponent from '@/components/layout/ContainerComponent.vue'
         }
     }
 }
+
+@include breakpoint(xs){
+    .teacher {
+        padding: 40px 0;
+    }
+}
 </style>

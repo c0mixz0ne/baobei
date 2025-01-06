@@ -76,7 +76,7 @@ import ButtonComponent from '@/components/ButtonComponent.vue'
                 button {
                     margin: 0 auto;
                     width: 100%;
-                    min-width: 290px;
+                    max-width: 500px;
                 }
             }
         }

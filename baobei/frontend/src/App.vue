@@ -17,5 +17,5 @@ const isLoginPage = computed(() => {
 <template>
     <Header />
     <Main />
-    <!-- <Footer v-if="!isLoginPage" /> -->
+    <Footer v-if="!isLoginPage" />
 </template>

@@ -31,3 +31,8 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+/baobei/frontend/.vite
+/baobei/frontend/.env
+/baobei/backend/.vite
+/baobei/backend/.env

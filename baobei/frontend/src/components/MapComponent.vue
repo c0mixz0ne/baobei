@@ -6,7 +6,9 @@ import {
     YandexMapControls,
     YandexMapZoomControl,
     YandexMapMarker,
-    YandexMapDefaultFeaturesLayer
+    YandexMapDefaultFeaturesLayer,
+    YandexMapOpenMapsButton,
+    YandexMapGeolocationControl
 } from 'vue-yandex-maps';
 
 import type { YMap, LngLat } from '@yandex/ymaps3-types';
@@ -14,8 +16,6 @@ import logo from '../assets/images/logo.png';
 
 const baobeicoordsa: number = import.meta.env.VITE_BAOBEI_COORDS_A;
 const baobeicoordsb: number = import.meta.env.VITE_BAOBEI_COORDS_B;
-
-
 
 const markers = [
     {
@@ -26,6 +26,14 @@ const markers = [
 
 //Можно использовать для различных преобразований
 const map = shallowRef<null | YMap>(null);
+
+const openMap = () => {
+    console.log(1);
+}
+
+const getTaxi = () => {
+    console.log(2);
+}
 
 </script>
 <template>
@@ -54,9 +62,14 @@ const map = shallowRef<null | YMap>(null);
         >
             <yandex-map-default-scheme-layer/>
             <yandex-map-controls :settings="{ position: 'right' }">
-                <yandex-map-zoom-control />
+                <yandex-map-zoom-control/>
             </yandex-map-controls>
-            <yandex-map-default-scheme-layer/>
+            <!-- <yandex-map-controls :settings="{ position: 'left bottom' }">
+                <yandex-map-open-maps-button :settings="{ title: 'Как добраться' }"/>
+            </yandex-map-controls> -->
+            <!-- <yandex-map-controls :settings="{ position: 'left top' }">
+                <yandex-map-geolocation-control/>
+            </yandex-map-controls> -->
             <yandex-map-default-features-layer/>
             <yandex-map-marker
                 v-for="marker in markers"

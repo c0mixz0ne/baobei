@@ -1,17 +1,20 @@
+<script lang="ts" setup>
+import ButtonComponent from '@/components/ButtonComponent.vue'
+import smoothScroll from '@/helpers/smoothScroll'
+
+const handlerAction = () => {
+    smoothScroll("#form");
+}
+
+</script>
 <template>
     <section class="recruitment">
         <div class="image-container">
             <h2>Набор в группы на 2024-2025 учебный год</h2>
         </div>
-        <ButtonComponent @action="buttonAction"> Запись на занятия </ButtonComponent>
+        <ButtonComponent @action="handlerAction"> Запись на занятия </ButtonComponent>
     </section>
 </template>
-<script lang="ts" setup>
-import ButtonComponent from '@/components/ButtonComponent.vue'
-const buttonAction = () => {
-    console.log('click')
-}
-</script>
 <style lang="scss" scoped>
 .recruitment {
     padding: 30px;

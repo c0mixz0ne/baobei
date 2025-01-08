@@ -1,23 +1,6 @@
-<template>
-    <div class="slider" @mouseenter="stopAutoPlay" @mouseleave="startAutoPlay">
-        <transition name="fade">
-            <div
-                class="slide"
-                :key="currentIndex"
-                :style="{ backgroundImage: slides[currentIndex].background }"
-            >
-                <div class="content">
-                    <p class="title">{{ slides[currentIndex].title }}</p>
-                    <p class="text">{{ slides[currentIndex].text }}</p>
-                    <button class="slide-button" @click="buttonClick">Записаться</button>
-                </div>
-            </div>
-        </transition>
-        <button @click="prevSlide" class="nav-button prev">‹</button>
-        <button @click="nextSlide" class="nav-button next">›</button>
-    </div>
-</template>
 <script>
+import smoothScroll from '@/helpers/smoothScroll'
+
 import slide1 from '@/assets/images/slider1.jpg'
 import slide2 from '@/assets/images/slider2.jpg'
 
@@ -54,7 +37,7 @@ export default {
             clearInterval(this.intervalId)
         },
         buttonClick() {
-            console.log('click')
+            smoothScroll("#form")
         }
     },
     mounted() {
@@ -65,6 +48,25 @@ export default {
     }
 }
 </script>
+<template>
+    <div class="slider" @mouseenter="stopAutoPlay" @mouseleave="startAutoPlay">
+        <transition name="fade">
+            <div
+                class="slide"
+                :key="currentIndex"
+                :style="{ backgroundImage: slides[currentIndex].background }"
+            >
+                <div class="content">
+                    <p class="title">{{ slides[currentIndex].title }}</p>
+                    <p class="text">{{ slides[currentIndex].text }}</p>
+                    <button class="slide-button" @click="buttonClick">Записаться</button>
+                </div>
+            </div>
+        </transition>
+        <button @click="prevSlide" class="nav-button prev">‹</button>
+        <button @click="nextSlide" class="nav-button next">›</button>
+    </div>
+</template>
 <style lang="scss" scoped>
 .slider {
     position: relative;

@@ -1,5 +1,5 @@
 <template>
-    <section class="form">
+    <section class="form" id="form">
         <ContainerComponent>
             <h2>Запишитесь на пробное занятие и мастер-классы!</h2>
             <h3>Оставьте свои контактные данные, и наш администратор свяжется с вами</h3>

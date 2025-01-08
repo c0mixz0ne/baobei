@@ -7,8 +7,7 @@ import {
     YandexMapZoomControl,
     YandexMapMarker,
     YandexMapDefaultFeaturesLayer,
-    YandexMapOpenMapsButton,
-    YandexMapGeolocationControl
+    YandexMapControlButton
 } from 'vue-yandex-maps';
 
 import type { YMap, LngLat } from '@yandex/ymaps3-types';
@@ -28,13 +27,29 @@ const markers = [
 const map = shallowRef<null | YMap>(null);
 
 const openMap = () => {
-    console.log(1);
+        const endCoords = [baobeicoordsb, baobeicoordsa]; // Координаты конечного пункта маршрута Baobei
+
+        // Формируем URL для Яндекс.Навигатора
+        const url = `https://yandex.ru/maps/?rtext=~${endCoords[0]},${endCoords[1]}&rtt=auto`;
+
+        // Открытие ссылки в новом окне
+        window.open(url, '_blank');
 }
 
-const getTaxi = () => {
-    console.log(2);
-}
+const goTaxi = () => {
+    const endCoords = [baobeicoordsb, baobeicoordsa]; // Координаты конечного пункта маршрута Baobei
 
+    // Формируем URL для Яндекс.Навигатора
+    const url = `https://3.redirect.appmetrica.yandex.com/route?
+                 &end-lat=${endCoords[0]}
+                 &end-lon=${endCoords[1]}
+                 &tariffClass=business
+                 &ref=baobei-online.ru
+                 &appmetrica_tracking_id=25395763362139037`;
+
+    // Открытие ссылки в новом окне
+    window.open(url, '_blank');
+}
 </script>
 <template>
     <section class="navigation">
@@ -58,15 +73,21 @@ const getTaxi = () => {
                 },
                 behaviors: ['drag', 'dblClick'], // Отключаем scrollZoom
             }"
-            
         >
             <yandex-map-default-scheme-layer/>
             <yandex-map-controls :settings="{ position: 'right' }">
                 <yandex-map-zoom-control/>
             </yandex-map-controls>
-            <!-- <yandex-map-controls :settings="{ position: 'left bottom' }">
-                <yandex-map-open-maps-button :settings="{ title: 'Как добраться' }"/>
-            </yandex-map-controls> -->
+            <yandex-map-controls :settings="{ position: 'left bottom' }">
+                <yandex-map-control-button  class="open-map" @click="openMap">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxOCIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI0Y0MyIgZD0iTTcgMGE3IDcgMCAwIDAtNC45NSAxMS45NWMxLjI3IDEuMjcgNC4yNSAzLjEgNC40MiA1LjAzLjAzLjI4LjI0LjUyLjUzLjUyLjI5IDAgLjUtLjI0LjUzLS41Mi4xNy0xLjkzIDMuMTUtMy43NiA0LjQyLTUuMDNBNyA3IDAgMCAwIDcgMHoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNyA5LjQ1YTIuNDUgMi40NSAwIDEgMCAwLTQuOSAyLjQ1IDIuNDUgMCAwIDAgMCA0Ljl6Ii8+PC9zdmc+" alt="Icon">
+                    Как добраться
+                </yandex-map-control-button>
+                <yandex-map-control-button class="go-taxi" @click="goTaxi">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iI2ZjMCIgZD0iTTQuNSAxQTMuNSAzLjUgMCAwIDAgMSA0LjVWOWgxNlY0LjVBMy41IDMuNSAwIDAgMCAxMy41IDFoLTl6Ii8+PHBhdGggZmlsbD0iI2U2ZTZlNiIgZD0iTTEgOXY0LjVBMy41IDMuNSAwIDAgMCA0LjUgMTdIOVY5SDF6Ii8+PHBhdGggZmlsbD0iIzAwMCIgZD0iTTkgOXY4aDQuNWEzLjUgMy41IDAgMCAwIDMuNS0zLjVWOUg5eiIvPjwvc3ZnPg==" alt="Icon">
+                    Доехать на такси
+                </yandex-map-control-button>
+            </yandex-map-controls>
             <!-- <yandex-map-controls :settings="{ position: 'left top' }">
                 <yandex-map-geolocation-control/>
             </yandex-map-controls> -->
@@ -87,8 +108,20 @@ const getTaxi = () => {
     </section>
 </template>
 <style lang="scss" scoped>
-// TODO: find fix important rule
 .map {
+    .open-map{
+       img{
+        vertical-align: middle;
+        margin-right: 5px;
+       }
+    }
+    .go-taxi{
+        img{
+        vertical-align: middle;
+        margin-right: 5px;
+       }
+    }
+    // TODO: find fix important rule
     width: 100%!important;
     height: 600px!important;
     cursor: grab;

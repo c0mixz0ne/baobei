@@ -36,7 +36,15 @@ const router = createRouter({
                 title: 'Baobei : Страница не найдена'
             }
         }
-    ]
+    ],
+    // TODO: fix scrollBehavior
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+          } else {
+            document.getElementById('app')?.scrollIntoView();
+          }
+    }
 })
 
 export default router

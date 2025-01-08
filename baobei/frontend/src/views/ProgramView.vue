@@ -1,5 +1,10 @@
+<script setup lang="ts">
+    import WelcomeComponent from '@/components/WelcomeComponent.vue'
+    import AboutProgramComponent from '@/components/AboutProgramComponent.vue';
+</script>
 <template>
-    <div class="program">
-        <h1>This is an program page</h1>
-    </div>
+    <WelcomeComponent class="program">
+        <h1>Образовательные программы</h1>
+    </WelcomeComponent>
+    <AboutProgramComponent />
 </template>

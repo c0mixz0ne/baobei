@@ -1,10 +1,8 @@
 <template>
     <section class="welcome">
-        <h1>Центр иностранных языков и детского развития <span>Baobei</span></h1>
-        <h2>
-            Ребенок - это как растущее растение, которое нуждается в уходе, внимании и развитии,
-            чтобы стать сильным и прекрасным
-        </h2>
+        <slot>
+            Данных нет
+        </slot>
     </section>
 </template>
 <style lang="scss" scoped>
@@ -20,7 +18,11 @@
     background-position: center center;
     background-repeat: no-repeat;
     padding: 0 30px;
-    h1 {
+    &.program{
+        background-image: linear-gradient(rgba(44, 55, 69, 0.8), rgba(44, 55, 69, 0.6)),
+        url(@/assets/images/background-program.jpg);
+    }
+    :slotted(h1) {
         color: var(--white);
         text-align: center;
         font-size: 52px;
@@ -28,7 +30,7 @@
             display: block;
         }
     }
-    h2 {
+    :slotted(h2) {
         color: var(--white);
         text-align: center;
         font-size: 20px;

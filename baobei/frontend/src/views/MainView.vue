@@ -10,7 +10,13 @@ import MapComponent from '@/components/MapComponent.vue'
 </script>
 
 <template>
-    <WelcomeComponent />
+    <WelcomeComponent>
+        <h1>Центр иностранных языков и детского развития <span>Baobei</span></h1>
+        <h2>
+            Ребенок - это как растущее растение, которое нуждается в уходе, внимании и развитии,
+            чтобы стать сильным и прекрасным
+        </h2>
+    </WelcomeComponent>
     <RecruitmentComponent />
     <ServiceComponent />
     <FreeLessonComponent />

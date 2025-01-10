@@ -3,11 +3,14 @@
 </script>
 
 <template>
-    <div class="program">
+    <section class="programs">
         <slot>
             Данные не получены
         </slot>
-    </div>
+    </section>
 </template>
 <style lang="scss" scoped>
+.programs{
+    background-color: var(--border-pink);
+}
 </style>

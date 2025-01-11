@@ -12,5 +12,10 @@
 <style lang="scss" scoped>
 .programs{
     background-color: var(--border-pink);
+    padding: 120px 0;
+
+    & :first-child{
+        margin-top: 0;
+    }
 }
 </style>

@@ -7,7 +7,7 @@
             <RouterLink to="/">
                 <img class="logo" src="@/assets/images/logo.png" alt="Логотип" />
             </RouterLink>
-            <p>© 2024 Baobei <span>dev by <a href="https://github.com/c0mixz0ne"><span>c</span>omix<span>z</span>one</a></span></p>
+            <p>© 2024 Baobei <span>dev by <a target="_blank" href="https://github.com/c0mixz0ne"><span>c</span>omix<span>z</span>one</a></span></p>
             <ul>
                 <li>
                     <a href="https://vk.com/baobeinsk">

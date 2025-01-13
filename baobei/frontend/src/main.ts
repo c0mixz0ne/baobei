@@ -11,9 +11,14 @@ const app = createApp(App)
 const ymapkey = import.meta.env.VITE_YMAPKEY;
 
 app.use(createPinia())
-app.use(createYmaps({
-    apikey: ymapkey, // API mail - c0mix70ne@yandex.ru
-}))
+if(ymapkey) {
+	app.use(createYmaps({
+		apikey: ymapkey, // API mail - c0mix70ne@yandex.ru
+	}));
+	
+	throw new Error("Yandex map ApiKey is not exist")
+}
+
 app.use(router)
 
 // Dynamic titles

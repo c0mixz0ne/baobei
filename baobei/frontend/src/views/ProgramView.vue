@@ -12,7 +12,7 @@
     <ProgramContainerComponent>
         <ProgramComponent class="rtl">
             <div class="content">
-                <div class="h3">Английский язык</div>
+                <h3 class="h3">Английский язык</h3>
                 <ul>
                     <li>
                         Одно занятие: от 45 минут
@@ -49,7 +49,7 @@
         </ProgramComponent>
         <ProgramComponent class="ltr">
             <div class="content">
-                <div class="h3">Китайский язык</div>
+                <h3 class="h3">Китайский язык</h3>
                 <ul> 
                     <li> 
                         Одно занятие: от 45 минут 
@@ -86,7 +86,7 @@
         </ProgramComponent>
         <ProgramComponent class="rtl">
             <div class="content">
-                <div class="h3">Дошкольная подготовка</div>
+                <h3 class="h3">Дошкольная подготовка</h3>
                 <ul> 
                     <li> 
                         Одно занятие: 45 минут 
@@ -117,7 +117,7 @@
         </ProgramComponent>
         <ProgramComponent class="ltr">
             <div class="content">
-                <div class="h3">Подготовка к ЕГЭ и ОГЭ</div>
+                <h3 class="h3">Подготовка к ЕГЭ и ОГЭ</h3>
                 <ul> 
                     <li> 
                         Одно занятие: 60 минут 

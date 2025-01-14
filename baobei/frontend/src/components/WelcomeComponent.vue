@@ -29,6 +29,10 @@
         span {
             display: block;
         }
+
+		@include breakpoint(sm) {
+			font-size: 42px;
+		}
     }
     :slotted(h2) {
         color: var(--white);

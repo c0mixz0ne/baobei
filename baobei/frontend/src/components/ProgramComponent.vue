@@ -8,7 +8,8 @@
 <style lang="scss" scoped>
 .program{
     width: 100%;
-    max-width: 960px;
+    // max-width: 960px;
+	max-width: 1320px;
     margin: 0 auto;
     padding: 0 15px;
     display: flex;
@@ -35,7 +36,7 @@
 
     &.ltr{
         :slotted(.content){
-            order: 1;
+            order: 2;
 			padding-left: 30px;
 
 			@include breakpoint(sm) {
@@ -45,7 +46,7 @@
         }
 
         :slotted(.image){
-            order: 2;
+            order: 1;
 
 			@include breakpoint(sm) {
 				padding: 0 15px;
@@ -89,12 +90,14 @@
 			width: 100%;
 			img {
 				position: relative;
+				max-height: 400px;
 			}
 		}
     }
 
 	@include breakpoint(sm) {
 		flex-direction: column;
+		margin-top: 50px;
 		
 		&.rtl, &.ltr{
 			padding-left: 0;

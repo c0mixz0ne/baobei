@@ -17,5 +17,9 @@
     & :first-child{
         margin-top: 0;
     }
+
+	@include breakpoint(sm){
+		padding: 50px 0;
+	}
 }
 </style>

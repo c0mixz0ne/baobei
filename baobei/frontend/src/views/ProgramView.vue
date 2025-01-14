@@ -3,12 +3,13 @@
     import WelcomeComponent from '@/components/WelcomeComponent.vue'
     import AboutProgramComponent from '@/components/AboutProgramComponent.vue';
     import ProgramComponent from '@/components/ProgramComponent.vue';
+	import ConnectBlock from '@/components/ConnectBlock.vue';
 </script>
 <template>
     <WelcomeComponent class="program">
         <h1>Образовательные программы</h1>
     </WelcomeComponent>
-    <AboutProgramComponent />
+    <AboutProgramComponent/>
     <ProgramContainerComponent>
         <ProgramComponent class="rtl">
             <div class="content">
@@ -135,7 +136,9 @@
                         Преподаватели со стажем работы и высокой языковой квалификацией 
                     </li> 
                     <li> 
-                        Эффективная методика обучения</li> <li> Абонемент 5200 за 8 занятий 
+                        Эффективная методика обучения</li> 
+					<li> 
+						Абонемент 5200 за 8 занятий 
                     </li>
                 </ul>
             </div>
@@ -144,4 +147,7 @@
             </div>
         </ProgramComponent>
     </ProgramContainerComponent>
+	<ConnectBlock/>
 </template>
+<style land="scss" scoped>
+</style>

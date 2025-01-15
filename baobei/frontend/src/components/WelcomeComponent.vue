@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 90px);
+    height: calc(100svh - 90px);
     background-image: linear-gradient(rgba(44, 55, 69, 0.8), rgba(44, 55, 69, 0.6)),
         url(@/assets/images/background1.jpg);
     background-size: cover;
@@ -21,6 +21,7 @@
     &.program{
         background-image: linear-gradient(rgba(44, 55, 69, 0.8), rgba(44, 55, 69, 0.6)),
         url(@/assets/images/background-program.jpg);
+		height: calc(50svh - 90px);
     }
     :slotted(h1) {
         color: var(--white);
@@ -53,7 +54,7 @@
 
 @include breakpoint(xs) {
     .welcome {
-        height: calc(100vh - 60px);
+        height: calc(100svh - 60px);
         padding: 10px;
         h1 {
             font-size: 32px;

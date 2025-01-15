@@ -16,5 +16,13 @@
         text-align: center;
         font-weight: lighter;
     }
+
+	@include breakpoint(sm){
+		padding: 40px 10px;
+		h2{
+			font-size: 18px;
+			line-height: 30px;
+		}
+	}
 }
 </style>

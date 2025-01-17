@@ -7,8 +7,9 @@ import { ref } from 'vue'
 import teacher0 from '@/assets/images/av.jpg'
 import teacher1 from '@/assets/images/ed.jpg'
 import teacher2 from '@/assets/images/sm.jpg'
-import teacher3 from '@/assets/images/um.jpg'
+import teacher3 from '@/assets/images/ba.jpg'
 import teacher4 from '@/assets/images/avl.jpg'
+import teacher5 from '@/assets/images/sk.jpg'
 
 // Carousel configuration
 const config = {
@@ -71,14 +72,20 @@ const cards = [
     {
         id: 3,
         photo: teacher3,
-        name: 'Ушкаленко Маргарита',
-        text: 'Методист языкового направления Преподаватель занятий по английскому языку'
+        name: 'Барановская Александра',
+        text: 'Преподаватель индивидуальных и групповых занятий по английскому языку'
     },
     {
         id: 4,
         photo: teacher4,
         name: 'Абрамов Владимир',
         text: 'Преподаватель индивидуальных и групповых занятий по китайскому языку'
+    },
+    {
+        id: 5,
+        photo: teacher5,
+        name: 'Сафонова Кристина',
+        text: 'Преподаватель занятий по русскому языку'
     }
 ]
 

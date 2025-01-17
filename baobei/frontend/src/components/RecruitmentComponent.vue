@@ -10,7 +10,7 @@ const handlerAction = () => {
 <template>
     <section class="recruitment">
         <div class="image-container">
-            <h2>Набор в группы на 2024-2025 учебный год</h2>
+            <h2>Набор в группы на 2025-2026 учебный год</h2>
         </div>
         <ButtonComponent @action="handlerAction"> Запись на занятия </ButtonComponent>
     </section>

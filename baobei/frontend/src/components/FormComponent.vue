@@ -1,20 +1,39 @@
+<script setup>
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
+import ButtonComponent from '@/components/ButtonComponent.vue'
+
+import { ref } from 'vue';
+import { formatName, formatPhone } from '@/helpers/validate';
+
+const name = ref('');
+const phone = ref('');
+
+const submitForm = (event) => {
+    console.log("submit", event);
+}
+
+const formatNameHandler = () => {
+    name.value = formatName(name);
+}
+
+const formatPhoneHandler = () => {
+    phone.value = formatPhone(phone);
+}
+
+</script>
 <template>
     <section class="form" id="form">
         <ContainerComponent>
             <h2>Запишитесь на пробное занятие и мастер-классы!</h2>
             <h3>Оставьте свои контактные данные, и наш администратор свяжется с вами</h3>
-            <form action="" method="post">
-                <input placeholder="Ваше имя" type="text" />
-                <input placeholder="+7 (999) 999-99-99" type="tel" />
+            <form @submit.prevent="submitForm($event)">
+                <input v-model="name" @input="formatNameHandler" placeholder="Ваше имя" type="text" />
+                <input v-model="phone" @input="formatPhoneHandler" placeholder="+7 (999) 999-99-99" type="tel" />
                 <ButtonComponent type="submit"> Заказать звонок </ButtonComponent>
             </form>
         </ContainerComponent>
     </section>
 </template>
-<script setup>
-import ContainerComponent from '@/components/layout/ContainerComponent.vue'
-import ButtonComponent from '@/components/ButtonComponent.vue'
-</script>
 <style lang="scss" scoped>
 .form {
     background-image: linear-gradient(rgba(44, 55, 69, 0.8), rgba(44, 55, 69, 0.6)),

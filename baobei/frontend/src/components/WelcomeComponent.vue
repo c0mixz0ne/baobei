@@ -21,7 +21,13 @@
     &.program{
         background-image: linear-gradient(rgba(44, 55, 69, 0.8), rgba(44, 55, 69, 0.6)),
         url(@/assets/images/background-program.jpg);
-		height: calc(50svh - 90px);
+		height: calc(60svh - 90px);
+    }
+    &.groups{
+        background-image: linear-gradient(rgba(240, 217, 219, 0.60), rgba(147, 114, 117, 0.80)),
+        url(@/assets/images/background-group.jpg);
+		height: calc(80svh - 90px);
+        background-position: center;
     }
     :slotted(h1) {
         color: var(--white);

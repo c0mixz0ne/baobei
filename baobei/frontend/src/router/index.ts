@@ -29,6 +29,14 @@ const router = createRouter({
             }
         },
         {
+            path: '/group',
+            name: 'group',
+            component: () => import('@/views/GroupView.vue'),
+            meta: {
+                title: 'Baobei : Набор в группы'
+            }
+        },
+        {
             path: '/:catchAll(.*)', // This will catch all unmatched routes
             name: 'notFound',
             component: () => import('@/views/NotFoundView.vue'),

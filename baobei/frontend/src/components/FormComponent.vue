@@ -106,6 +106,7 @@ const formatPhoneHandler = () => {
             button {
                 margin: 0;
                 width: 33.3%;
+                font-size: var(--font-size);
             }
         }
     }

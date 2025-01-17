@@ -56,7 +56,7 @@ const openModal = () => {
 			text-decoration: underline;
 			background-color: transparent;
 			cursor: pointer;
-			font-size: 22px;
+			font-size: 20px;
 			border: 0;
 		}
 	}

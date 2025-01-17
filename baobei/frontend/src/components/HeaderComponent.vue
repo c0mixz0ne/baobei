@@ -6,6 +6,8 @@
             </RouterLink>
             <nav>
                 <RouterLink to="/">Главная</RouterLink>
+                <RouterLink to="/program">Программы</RouterLink>
+                <RouterLink to="/group">Группы</RouterLink>
                 <RouterLink to="/login">Войти</RouterLink>
             </nav>
         </ContainerComponent>
@@ -36,6 +38,12 @@ import ContainerComponent from '@/components/layout/ContainerComponent.vue'
         nav {
             display: flex;
             gap: 15px;
+            width: 100%;
+            margin-left: 10px;
+
+            & :last-child{
+                margin-left: auto;
+            }
 
             a {
                 text-decoration: none;

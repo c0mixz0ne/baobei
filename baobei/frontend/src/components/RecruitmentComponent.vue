@@ -2,9 +2,9 @@
 import ButtonComponent from '@/components/ButtonComponent.vue'
 import smoothScroll from '@/helpers/smoothScroll'
 
-const handlerAction = () => {
-    smoothScroll("#form");
-}
+// const handlerAction = () => {
+//     smoothScroll("#form");
+// }
 
 </script>
 <template>
@@ -12,15 +12,33 @@ const handlerAction = () => {
         <div class="image-container">
             <h2>Набор в группы на 2025-2026 учебный год</h2>
         </div>
-        <ButtonComponent @action="handlerAction"> Запись на занятия </ButtonComponent>
+        <RouterLink class="button-link" to="/group">Запись на занятия</RouterLink>
+        <!-- <ButtonComponent @action="handlerAction"> Запись на занятия </ButtonComponent> -->
     </section>
 </template>
 <style lang="scss" scoped>
 .recruitment {
     padding: 30px;
-    .button {
+    .button-link{
+        color: var(--white);
+        background-color: var(--button-pink);
+        border: none;
+        padding: 20px;
+        display: block;
+        margin: 0 auto;
+        cursor: pointer;
+        font-weight: bold;
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+        text-decoration: none;
+        font-size: var(--font-size);
+    }
+
+    .button, .button-link{
         margin-top: 50px;
     }
+    
     .image-container {
         background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
             url(@/assets/images/background2.jpg);

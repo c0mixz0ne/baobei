@@ -54,6 +54,7 @@ const openModal = () => {
 		button{
 			color: var(--pink);
 			text-decoration: underline;
+			background-color: transparent;
 			cursor: pointer;
 			font-size: 22px;
 			border: 0;

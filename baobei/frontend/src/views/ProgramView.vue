@@ -1,9 +1,18 @@
 <script setup lang="ts">
     import ProgramContainerComponent from '@/components/layout/ProgramContainerComponent.vue';
-    import WelcomeComponent from '@/components/WelcomeComponent.vue'
+    import WelcomeComponent from '@/components/WelcomeComponent.vue';
     import AboutProgramComponent from '@/components/AboutProgramComponent.vue';
     import ProgramComponent from '@/components/ProgramComponent.vue';
 	import ConnectBlock from '@/components/ConnectBlock.vue';
+    import ModalFormComponent from '@/components/ModalFormComponent.vue';
+
+    import { computed } from 'vue';
+
+    import { useModalStore } from '@/stores/modal';
+
+    const modalStore = useModalStore();
+
+    const isModalShow = computed(() => modalStore.getIsShow);
 </script>
 <template>
     <WelcomeComponent class="program">
@@ -148,6 +157,7 @@
         </ProgramComponent>
     </ProgramContainerComponent>
 	<ConnectBlock/>
+    <ModalFormComponent v-if="isModalShow"/>
 </template>
 <style land="scss" scoped>
 </style>

@@ -34,6 +34,10 @@
 		@include breakpoint(sm) {
 			font-size: 42px;
 		}
+
+        @include breakpoint(xs) {
+			font-size: 32px;
+		}
     }
     :slotted(h2) {
         color: var(--white);
@@ -44,21 +48,21 @@
     }
 }
 
-@include breakpoint(sm) {
-    .welcome {
-        h1 {
-            font-size: 42px;
-        }
-    }
-}
+// @include breakpoint(sm) {
+//     .welcome {
+//         h1 {
+//             font-size: 42px;
+//         }
+//     }
+// }
 
 @include breakpoint(xs) {
     .welcome {
         height: calc(100svh - 60px);
         padding: 10px;
-        h1 {
-            font-size: 32px;
-        }
+        // h1 {
+        //     font-size: 32px;
+        // }
     }
 }
 </style>

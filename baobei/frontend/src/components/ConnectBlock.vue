@@ -1,4 +1,11 @@
 <script setup lang="ts">
+import { useModalStore } from '@/stores/modal';
+
+const modalStore = useModalStore();
+
+const openModal = () => {
+	modalStore.setIsShow(true);
+}
 </script>
 <template>
 	<section class="connect">
@@ -10,7 +17,7 @@
 			<li>Телефон: <a href="tel:+79139178616"><b>+ 7 913 917 86 16</b></a></li>
 		</ul>
 		<p>
-			<a href="">Оставить заявку на обратный звонок</a>
+			<button @click="openModal">Оставить заявку на обратный звонок</button>
 		</p>
 	</section>
 </template>
@@ -44,8 +51,12 @@
 	}
 
 	> p{
-		a{
+		button{
 			color: var(--pink);
+			text-decoration: underline;
+			cursor: pointer;
+			font-size: 22px;
+			border: 0;
 		}
 	}
 

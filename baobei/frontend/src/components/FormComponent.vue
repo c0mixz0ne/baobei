@@ -1,10 +1,10 @@
 <script setup>
-import ContainerComponent from '@/components/layout/ContainerComponent.vue'
-import ButtonComponent from '@/components/ButtonComponent.vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue';
+import ButtonComponent from '@/components/ButtonComponent.vue';
 
-import { ref } from 'vue'
-import { formatName, formatPhone } from '@/helpers/formatInput'
-import { validateName, validatePhone } from '@/helpers/validateInput'
+import { ref } from 'vue';
+import { formatName, formatPhone } from '@/helpers/formatInput';
+import { validateName, validatePhone } from '@/helpers/validateInput';
 
 const name = ref('');
 const phone = ref('');
@@ -41,7 +41,7 @@ const formatPhoneHandler = () => {
         <ContainerComponent>
             <h2>Запишитесь на пробное занятие и мастер-классы!</h2>
             <h3>Оставьте свои контактные данные, и наш администратор свяжется с вами</h3>
-            <form @submit.prevent="submitForm($event)">
+            <form @submit.prevent="submitForm()">
                 <div class="input-wrapper">
                     <input name="name" v-model="name" @input="formatNameHandler" placeholder="Ваше имя" type="text"/>
                     <label v-if="errorName" for="name">{{ errorName }}</label>

@@ -1,8 +1,16 @@
 <script setup>
-    import ContainerComponent from '@/components/layout/ContainerComponent.vue'
+    import ContainerComponent from '@/components/layout/ContainerComponent.vue';
+
+    import { computed } from 'vue';
+    import { useRoute } from 'vue-router';
+
+    const route = useRoute();
+    const isLoginPage = computed(() => {
+        return route.path === '/login';
+    })
 </script>
 <template>
-    <footer class="footer">
+    <footer v-if="!isLoginPage" class="footer">
         <ContainerComponent>
             <RouterLink to="/">
                 <img class="logo" src="@/assets/images/logo.png" alt="Логотип" />

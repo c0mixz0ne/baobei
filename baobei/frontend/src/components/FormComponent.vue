@@ -2,14 +2,29 @@
 import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 import ButtonComponent from '@/components/ButtonComponent.vue'
 
-import { ref } from 'vue';
-import { formatName, formatPhone } from '@/helpers/validate';
+import { ref } from 'vue'
+import { formatName, formatPhone } from '@/helpers/formatInput'
+import { validateName, validatePhone } from '@/helpers/validateInput'
 
 const name = ref('');
 const phone = ref('');
 
-const submitForm = (event) => {
-    console.log("submit", event);
+const errorName = ref('');
+const errorPhone = ref('');
+
+
+const submitForm = () => {
+    errorName.value = validateName(name);
+    errorPhone.value = validatePhone(phone);
+
+    if (errorName.value || errorPhone.value) {
+        return;
+    }
+    
+    alert('submit');
+    name.value = '';
+    phone.value = '';
+
 }
 
 const formatNameHandler = () => {
@@ -27,8 +42,14 @@ const formatPhoneHandler = () => {
             <h2>Запишитесь на пробное занятие и мастер-классы!</h2>
             <h3>Оставьте свои контактные данные, и наш администратор свяжется с вами</h3>
             <form @submit.prevent="submitForm($event)">
-                <input v-model="name" @input="formatNameHandler" placeholder="Ваше имя" type="text" />
-                <input v-model="phone" @input="formatPhoneHandler" placeholder="+7 (999) 999-99-99" type="tel" />
+                <div class="input-wrapper">
+                    <input name="name" v-model="name" @input="formatNameHandler" placeholder="Ваше имя" type="text"/>
+                    <label v-if="errorName" for="name">{{ errorName }}</label>
+                </div>
+                <div class="input-wrapper">
+                    <input name="phone" v-model="phone" @input="formatPhoneHandler" placeholder="+7 (999) 999-99-99" type="tel"/>
+                    <label v-if="errorPhone" for="phone">{{ errorPhone }}</label>
+                </div>
                 <ButtonComponent type="submit"> Заказать звонок </ButtonComponent>
             </form>
         </ContainerComponent>
@@ -63,15 +84,24 @@ const formatPhoneHandler = () => {
             margin-top: 40px;
             display: flex;
             justify-content: space-between;
-            input {
-                color: var(--black);
-                background-color: var(--white);
-                border-radius: 0;
-                border: 0;
-                padding: 0 20px;
-                line-height: 60px;
-                font-size: 16px;
+            gap: 10px;
+            .input-wrapper  {
                 width: 33.3%;
+                label {
+                    display: block;
+                    margin-top: 5px;
+                    color: var(--error);
+                }
+                input {
+                    color: var(--black);
+                    background-color: var(--white);
+                    border-radius: 0;
+                    border: 0;
+                    padding: 0 20px;
+                    line-height: 60px;
+                    font-size: 16px;
+                    width: 100%;
+                }
             }
             button {
                 margin: 0;
@@ -86,11 +116,10 @@ const formatPhoneHandler = () => {
         .container {
             form {
                 flex-direction: column;
-                input {
+                .input-wrapper {
                     width: 100%;
                     max-width: 500px;
                     margin: 0 auto;
-                    margin-bottom: 10px;
                 }
                 button {
                     margin: 0 auto;

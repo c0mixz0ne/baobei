@@ -3,7 +3,7 @@
         <ContainerComponent>
             <div :class="$style.carousel">
                 <div :class="$style.inner">
-                    <div class="slide" v-for="teacher in teachers">
+                    <div class="slide" v-for="(teacher, id) in teachers" :key="id">
                         {{ teacher.name }}
                     </div>
                 </div>
@@ -12,7 +12,6 @@
     </section>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 import ContainerComponent from './layout/ContainerComponent.vue'
 

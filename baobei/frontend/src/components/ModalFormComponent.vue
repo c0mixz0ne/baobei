@@ -7,7 +7,7 @@ import { useModalStore } from '@/stores/modal';
 
 onMounted(() => (document.body.style.overflow = 'hidden'));
 
-onUnmounted(() => (document.body.style.overflow = 'auto'));
+onUnmounted(() => (document.body.style.overflow = ''));
 
 const modalStore = useModalStore();
 
@@ -18,8 +18,9 @@ const close = () => {
 const name = ref('');
 const phone = ref('');
 
-const errorName = ref('');
-const errorPhone = ref('');
+// TODO: fix types
+const errorName = ref<string | undefined>('');
+const errorPhone = ref<string | undefined>('');
 
 const submitForm = () => {
     errorName.value = validateName(name);
@@ -76,7 +77,7 @@ const formatPhoneHandler = () => {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: var(--pink-opacity);
+    background-color: var(--black-opacity);
     padding: 20px;
 
     .modal {

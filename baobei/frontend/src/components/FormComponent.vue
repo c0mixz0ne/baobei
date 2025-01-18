@@ -87,10 +87,14 @@ const formatPhoneHandler = () => {
             gap: 10px;
             .input-wrapper  {
                 width: 33.3%;
+                position: relative;
                 label {
                     display: block;
                     margin-top: 5px;
                     color: var(--error);
+                    position: absolute;
+                    left: 0;
+                    bottom: -20px;
                 }
                 input {
                     color: var(--black);
@@ -117,6 +121,7 @@ const formatPhoneHandler = () => {
         .container {
             form {
                 flex-direction: column;
+                gap: 30px;
                 .input-wrapper {
                     width: 100%;
                     max-width: 500px;

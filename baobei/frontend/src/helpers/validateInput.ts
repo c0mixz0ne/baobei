@@ -8,8 +8,6 @@ export const validateName = (name: Ref<string>) => {
     if (name.value.length < 2) {
         return 'Имя не может быть короче двух символов'
     }
-
-    return 0
 }
 
 export const validatePhone = (phone: Ref<string>) => {
@@ -22,6 +20,4 @@ export const validatePhone = (phone: Ref<string>) => {
     if (cleaned.length < 11) {
         return 'Телефон должен содержать 11 цифр'
     }
-    
-    return 0
 }

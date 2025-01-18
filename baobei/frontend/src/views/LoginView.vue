@@ -1,11 +1,16 @@
+<script setup lang="ts">
+    const login = () => {
+        alert('Авторизация в разработке');
+    }
+</script>
 <template>
     <section class="login">
         <div class="container">
             <h1>Страница входа</h1>
-            <form action="" method="post">
+            <form @submit.prevent>
                 <input placeholder="E-mail" type="text" />
                 <input placeholder="Пароль" type="password" />
-                <button>Войти</button>
+                <button @click="login" type="submit">Войти</button>
             </form>
         </div>
     </section>

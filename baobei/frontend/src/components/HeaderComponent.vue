@@ -23,8 +23,8 @@ const scrollHandler = () => {
 
 onMounted(() => {
     resizeHandler();
-    window.addEventListener('resize', resizeHandler);
-    window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('resize', resizeHandler, {passive: true});
+    window.addEventListener('scroll', scrollHandler, {passive: true});
 });
 
 onUnmounted(() => {
@@ -48,7 +48,7 @@ onUnmounted(() => {
                         <RouterLink to="/program">Программы</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/group">Группы</RouterLink>
+                        <RouterLink to="/group">Набор</RouterLink>
                     </li>
                     <li>
                         <RouterLink to="/login">Войти</RouterLink>
@@ -78,7 +78,7 @@ onUnmounted(() => {
                         <RouterLink @click="toggleMobileMenu" to="/program">Программы</RouterLink>
                     </li>
                     <li>
-                        <RouterLink @click="toggleMobileMenu" to="/group">Группы</RouterLink>
+                        <RouterLink @click="toggleMobileMenu" to="/group">Набор</RouterLink>
                     </li>
                     <li>
                         <RouterLink @click="toggleMobileMenu" to="/login">Войти</RouterLink>

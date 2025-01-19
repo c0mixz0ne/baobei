@@ -1,14 +1,23 @@
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue';
+import { ref, computed } from 'vue';
 import ContainerComponent from './layout/ContainerComponent.vue';
+import ButtonComponent from './ButtonComponent.vue';
+import { formatName, formatPhone } from '@/helpers/formatInput';
+import { validateName, validatePhone } from '@/helpers/validateInput';
 
 const typeEducation = ref<never[]>([]);
 const yearsOld = ref<never[]>([]);
 const formatLesson = ref<never[]>([]);
 const durationStudy = ref<never[]>([]);
-const studentName = ref();
+const studentName = ref('');
+const studentPhone = ref('');
+const studentWishes = ref<any>('');
 
-// TODO: fix types
+const errorName = ref<string | undefined>('');
+const errorPhone = ref<string | undefined>('');
+const formError = ref(false);
+
+// TODO: fix typescript types
 const setCheckbox = (event: any, question: any, option: string) => {     
     if (event.target.checked) {
         if (event.target.parentElement.querySelector('.custom-wrapper')) {
@@ -38,7 +47,12 @@ const customCheckboxHandler = (event: any, question: any) => {
 
     const index = question.indexOf(foundOption);
 
-    question[index] = `Свой вариант: ${event.target.value.length ? event.target.value : 'Не указан'}`;    
+    if (event.target.value.length) {
+        question[index] = `Свой вариант: ${event.target.value}`;
+    } else {
+        question[index] = 'Не указан';
+        event.target.value = 'Не указан';
+    }  
 }
 
 const setRadio = (event: any, question: any, option: string) => {
@@ -46,7 +60,7 @@ const setRadio = (event: any, question: any, option: string) => {
         event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').classList.add('show');
         event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').focus();
     } else {
-        // TODO: fix
+        // TODO: fix query
         event.target.parentElement.parentElement.parentElement.querySelector('.custom').classList.remove('show');
         event.target.parentElement.parentElement.parentElement.querySelector('.custom').value = '';
 
@@ -58,19 +72,92 @@ const setRadio = (event: any, question: any, option: string) => {
 
 const customRadioHandler = (event: any, question: any) => {
     question[0] = `Свой вариант: ${event.target.value.length ? event.target.value : 'Не указан'}`; 
-    console.log(question);
 }
 
+const formatNameHandler = () => {
+    studentName.value = formatName(studentName);
+}
+
+const formatPhoneHandler = () => {
+    studentPhone.value = formatPhone(studentPhone);
+}
+
+const studentWishesComputed = () => {
+    studentWishes.value = studentWishes.value.charAt(0).toUpperCase() + studentWishes.value.slice(1);
+}
+
+const submitForm = () => {
+    validateQuestion();
+
+    errorName.value = validateName(studentName);
+    errorPhone.value = validatePhone(studentPhone);
+
+    if (!typeEducation.value.length ||
+        !yearsOld.value.length ||
+        !formatLesson.value.length ||
+        !durationStudy.value.length ||
+        !studentName.value.length ||
+        !studentPhone.value.length) {
+            formError.value = true;
+            return;
+    }
+
+    const formData = {
+        'Какое направление вас заинтересовало?': typeEducation.value,
+        'Сколько лет поступающему на обучение?': yearsOld.value,
+        'Какой формат занятий вам интересен?': formatLesson.value,
+        'Срок обучения для достижения вашей цели?': durationStudy.value,
+        'Ваше имя': studentName.value,
+        'Ваш телефон': studentPhone.value,
+        'Ваши пожелания': studentWishes.value.length ? studentWishes.value : 'Не указано'
+    }
+
+    formError.value = false;
+
+    console.log(formData);
+
+    // typeEducation.value = [];
+    // yearsOld.value = [];
+    // formatLesson.value = [];
+    // durationStudy.value = [];
+    // studentName.value = '';
+    // studentPhone.value = '';
+    // studentWishes.value = '';
+
+
+    document.querySelectorAll('.check[type=checkbox]:checked').forEach((input: any) => {
+        // input.value = false;
+        console.log(input);
+        
+    });
+
+    document.querySelectorAll('.radio[name=radio]:checked').forEach((input: any) => {
+        // input.value = false;
+        console.log(input);
+    })
+}
+
+const validateQuestion = () => {
+    document.querySelectorAll('.question').forEach((el) => {
+        if (el.getAttribute('id')) {
+            if (!el.querySelector('input')?.value) {
+                el.classList.add('error');
+            } else {
+                el.classList.remove('error');
+            }         
+        }
+    })
+}
 </script>
 
 <template>
     <section class="testing">
         <ContainerComponent>
-            <form @submit.prevent class="testing-form">
+            <form @submit.prevent="submitForm()" class="testing-form">
                 <div id="question-1" class="question">
                     <input :value="typeEducation" name="Какое направление вас заинтересовало?" type="hidden">
                     <p class="question-title">
-                        Какое направление вас заинтересовало? {{ typeEducation }}
+                        Какое направление вас заинтересовало?
                     </p>
                     <ul class="checkbox-list">
                         <li class="checkbox-item">
@@ -123,7 +210,7 @@ const customRadioHandler = (event: any, question: any) => {
                 <div id="question-2" class="question">
                     <input :value="yearsOld" name="Сколько лет поступающему на обучение?" type="hidden">
                     <p class="question-title">
-                        Сколько лет поступающему на обучение? {{ yearsOld }}
+                        Сколько лет поступающему на обучение?
                     </p>
                     <ul class="checkbox-list">
                         <li class="checkbox-item">
@@ -173,7 +260,7 @@ const customRadioHandler = (event: any, question: any) => {
                 <div id="question-3" class="question">
                     <input :value="formatLesson" name="Какой формат занятий вам интересен?" type="hidden">
                     <p class="question-title">
-                        Какой формат занятий вам интересен? {{ formatLesson }}
+                        Какой формат занятий вам интересен?
                     </p>
                     <ul class="checkbox-list">
                         <li class="checkbox-item">
@@ -203,9 +290,9 @@ const customRadioHandler = (event: any, question: any) => {
                     </ul>
                 </div>
                 <div id="question-4" class="question">
-                    <input :value="formatLesson" name="Срок обучения для достижения вашей цели?" type="hidden">
+                    <input :value="durationStudy" name="Срок обучения для достижения вашей цели?" type="hidden">
                     <p class="question-title">
-                        Срок обучения для достижения вашей цели? {{ durationStudy }}
+                        Срок обучения для достижения вашей цели?
                     </p>
                     <ul class="radio-list">
                         <li class="radio-item">
@@ -250,10 +337,26 @@ const customRadioHandler = (event: any, question: any) => {
                 </div>
                 <div class="question">
                     <p class="question-title">
-                        Ваше имя {{ studentName }}
-                        <input class="long-input" v-model="studentName" type="text">
+                        Ваше имя
                     </p>
+                    <input @input="formatNameHandler" name="name" class="long-input" v-model="studentName" type="text">
+                    <label v-if="errorName" for="name">{{ errorName }}</label>
                 </div>
+                <div class="question">
+                    <p class="question-title">
+                        Ваш телефон
+                    </p>
+                    <input @input="formatPhoneHandler" name="phone" class="long-input" v-model="studentPhone" type="text">
+                    <label v-if="errorPhone" for="phone">{{ errorPhone }}</label>
+                </div>
+                <div class="question">
+                    <p class="question-title">
+                        Ваши пожелания
+                    </p>
+                    <input class="long-input" @input="studentWishesComputed" v-model="studentWishes" type="text" maxlength="250">
+                </div>
+                <ButtonComponent type="submit">Отправить форму</ButtonComponent>
+                <div v-if="formError" class="form-error">Пожалуйста, заполните все обязательные поля</div>
             </form>
         </ContainerComponent>
     </section>
@@ -273,9 +376,30 @@ const customRadioHandler = (event: any, question: any) => {
         
         .question{
             margin-bottom: 30px;
-            padding: 5px;
+            padding: 12px;
+            position: relative;
+            > label {
+                display: block;
+                margin-top: 5px;
+                color: var(--error);
+                position: absolute;
+                left: 10px;
+                bottom: -15px;
+                font-size: 12px;
+            }
             &.error{
                 outline: 1px solid var(--error);
+                position: relative;
+                border-radius: 5px;
+                &::after{
+                    content: "Обязательное поле";
+                    position: absolute;
+                    right: 10px;
+                    background-color: var(--white);
+                    font-size: 12px;
+                    bottom: -6px;
+                    color: var(--error);
+                }
             }
             .long-input {
                 width: 100%;
@@ -285,6 +409,8 @@ const customRadioHandler = (event: any, question: any) => {
                 border: none;
                 border-bottom: 1px solid var(--black);
                 font-size: var(--font-size);
+
+                
             }
 
             .question-title {
@@ -486,6 +612,11 @@ const customRadioHandler = (event: any, question: any) => {
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+
+        .form-error{
+            margin-top: 20px;
+            color: var(--error);
         }
     }
 }

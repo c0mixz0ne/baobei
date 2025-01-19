@@ -1,15 +1,40 @@
 <script setup lang="ts">
-import { reactive, watch } from 'vue';
+import { reactive, ref, watch } from 'vue';
 import ContainerComponent from './layout/ContainerComponent.vue';
 
-const typeEducation = reactive<any>({});
+const typeEducation = ref<never[]>([]);
 
-const setIputValue = (event: any) => { 
+// TODO: types
+const setIputValue = (event: any, question: any, option: string) => {     
     if (event.target.checked) {
-        return event.target.parentElement.querySelector('span').innerText;
+        if (event.target.parentElement.querySelector('.custom-wrapper')){
+            
+            event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').classList.add('show');
+            event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').focus();
+        }
+
+        question.push(option);
+
     } else {
-        return '';
+        if (event.target.parentElement.querySelector('.custom-wrapper')){
+            event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').classList.remove('show');
+            event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').value = '';
+        }
+
+        const index = question.indexOf(option);
+
+        question.splice(index, 1);
     }
+}
+
+const customHandler = (event: any, question: any) => {
+    const searchOption = 'Свой вариант';
+
+    const foundOption = question.find((question: any) => question.includes(searchOption));
+
+    const index = question.indexOf(foundOption);
+
+    question[index] = `Свой вариант: ${event.target.value.length ? event.target.value : ' Не указан'}`;    
 }
 </script>
 
@@ -25,46 +50,46 @@ const setIputValue = (event: any) => {
                     <ul class="checkbox-list">
                         <li class="checkbox-item">
                             <label for="one">
-                                <input @input="typeEducation.russian = setIputValue($event)" id="one" class="check" type="checkbox">
+                                <input @input="setIputValue($event, typeEducation, 'Русский язык')" id="one" class="check" type="checkbox">
                                 <div class="checkbox-indicator"></div>
                                 <span>Русский язык</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="two">
-                                <input @input="typeEducation.english = setIputValue($event)" id="two" class="check" type="checkbox">
+                                <input @input="setIputValue($event, typeEducation, 'Английский язык')" id="two" class="check" type="checkbox">
                                 <div class="checkbox-indicator"></div>
                                 <span>Английский язык</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="three">
-                                <input @input="typeEducation.math = setIputValue($event)" id="three" class="check" type="checkbox">
+                                <input @input="setIputValue($event, typeEducation, 'Математика')" id="three" class="check" type="checkbox">
                                 <div class="checkbox-indicator"></div>
                                 <span>Математика</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="four">
-                                <input @input="typeEducation.school = setIputValue($event)" id="four" class="check" type="checkbox">
+                                <input @input="setIputValue($event, typeEducation, 'Дошкольная подготовка')" id="four" class="check" type="checkbox">
                                 <div class="checkbox-indicator"></div>
                                 <span>Дошкольная подготовка</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="five">
-                                <input @input="typeEducation.chinese = setIputValue($event)" id="five" class="check" type="checkbox">
+                                <input @input="setIputValue($event, typeEducation, 'Китайский язык')" id="five" class="check" type="checkbox">
                                 <div class="checkbox-indicator"></div>
                                 <span>Китайский язык</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="six">
-                                <input @input="typeEducation.custom = setIputValue($event)" id="six" class="check" type="checkbox">
+                                <input @input="setIputValue($event, typeEducation, 'Свой вариант')" id="six" class="check" type="checkbox">
                                 <div class="checkbox-indicator"></div>
-                                <div class="custom">
+                                <div class="custom-wrapper">
                                     <span>Свой вариант</span>
-                                    <input class="custom" type="text" maxlength="250">
+                                    <input @blur="customHandler($event, typeEducation)" class="custom" type="text" maxlength="250">
                                 </div>
                             </label>
                         </li>
@@ -154,9 +179,7 @@ const setIputValue = (event: any) => {
                         }
                     }
 
-                    .custom{
-                        background-color: transparent;
-                        border: none;
+                    .custom-wrapper{
                         display: flex;
                         width: 100%;
 
@@ -164,17 +187,25 @@ const setIputValue = (event: any) => {
                             flex-shrink: 0;
                         }
 
-                        input {
-                            display: block;
+                        .custom {
+                            display: none;
+                            background-color: transparent;
+                            border: none;
+                            margin-top: -2px;
+                            vertical-align: middle;
                             margin-left: 10px;
                             border-bottom: 1px solid var(--black);
                             width: 100%;
                             font-size: var(--font-size);
+                            &.show{
+                                display: block;
+                            }
+
+                            &:focus {
+                                outline: none;
+                            }
                         }
 
-                        &:focus {
-                            outline: none;
-                        }
                     }
 
                     &:last-child{

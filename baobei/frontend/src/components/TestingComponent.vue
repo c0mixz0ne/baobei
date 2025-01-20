@@ -128,26 +128,23 @@ const submitForm = () => {
         'Ваши пожелания': studentWishes.value.length ? studentWishes.value : 'Не указано'
     }
 
+    // Reset form
     formError.value = false
 
-    console.log(formData)
-
-    // typeEducation.value = [];
-    // yearsOld.value = [];
-    // formatLesson.value = [];
-    // durationStudy.value = [];
-    // studentName.value = '';
-    // studentPhone.value = '';
-    // studentWishes.value = '';
+    typeEducation.value = [];
+    yearsOld.value = [];
+    formatLesson.value = [];
+    durationStudy.value = [];
+    studentName.value = '';
+    studentPhone.value = '';
+    studentWishes.value = '';
 
     document.querySelectorAll('.check[type=checkbox]:checked').forEach((input: any) => {
-        // input.value = false;
-        console.log(input)
+        input.checked = false;
     })
 
-    document.querySelectorAll('.radio[name=radio]:checked').forEach((input: any) => {
-        // input.value = false;
-        console.log(input)
+    document.querySelectorAll('.check[name=radio]:checked').forEach((input: any) => {
+        input.checked = false;
     })
 }
 

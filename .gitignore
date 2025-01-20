@@ -39,3 +39,4 @@ coverage
 /baobei/frontend/package-lock.json
 /baobei/backend/.vite
 /baobei/backend/.env
+/baobei/backend/package-lock.json

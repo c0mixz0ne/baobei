@@ -356,7 +356,7 @@ const validateQuestion = () => {
                     <input class="long-input" @input="studentWishesComputed" v-model="studentWishes" type="text" maxlength="250">
                 </div>
                 <ButtonComponent type="submit">Отправить форму</ButtonComponent>
-                <div v-if="formError" class="form-error">Пожалуйста, заполните все обязательные поля</div>
+                <span v-if="formError" class="form-error">Пожалуйста, заполните все обязательные поля</span>
             </form>
         </ContainerComponent>
     </section>
@@ -615,8 +615,11 @@ const validateQuestion = () => {
         }
 
         .form-error{
+            padding: 0 12px;
             margin-top: 20px;
             color: var(--error);
+            display: block;
+            text-align: center;
         }
     }
 }

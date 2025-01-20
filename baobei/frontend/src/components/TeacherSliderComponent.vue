@@ -152,10 +152,12 @@ const prev = () => carouselRef.value.prev();
         border-radius: 50%;
         transform: translateY(-50%);
         cursor: pointer;
-
             svg{
                 width: 14px;
                 height: 8px;
+				polyline{
+					stroke: var(--black);
+				}
             }
         }
         .prev-arrow{
@@ -209,7 +211,7 @@ const prev = () => carouselRef.value.prev();
                 border: 1px solid var(--white);
                 svg{
                     polyline{
-                        stroke: #ffff;
+                        stroke: var(--white);
                     }
                 }
             }

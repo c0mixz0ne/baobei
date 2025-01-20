@@ -1,3 +1,6 @@
+<script lang="ts" setup>
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
+</script>
 <template>
     <section class="about">
         <ContainerComponent>
@@ -46,9 +49,6 @@
         </div>
     </section>
 </template>
-<script lang="ts" setup>
-import ContainerComponent from '@/components/layout/ContainerComponent.vue'
-</script>
 <style lang="scss" scoped>
 .about {
     background-color: var(--card-pink);

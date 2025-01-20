@@ -11,7 +11,7 @@ import {
 } from 'vue-yandex-maps';
 
 import type { YMap, LngLat } from '@yandex/ymaps3-types';
-import logo from '../assets/images/logo.png';
+import logo from '@/assets/images/logo.png';
 
 const baobeicoordsa: number = import.meta.env.VITE_BAOBEI_COORDS_A;
 const baobeicoordsb: number = import.meta.env.VITE_BAOBEI_COORDS_B;

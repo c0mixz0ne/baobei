@@ -2,8 +2,10 @@
   "compilerOptions": {
     "typeRoots": [
       "./node_modules/@types",
-      "./node_modules/@yandex/ymaps3-types"
-    ]
+      "./node_modules/@yandex/ymaps3-types",
+    ],
+	"target": "esnext",
+    "module": "esnext",
   },
   "files": [],
   "references": [

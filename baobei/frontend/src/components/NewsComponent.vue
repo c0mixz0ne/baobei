@@ -1,3 +1,6 @@
+<script setup>
+import ContainerComponent from '@/components/layout/ContainerComponent.vue';
+</script>
 <template>
     <section class="news">
         <ContainerComponent>
@@ -11,9 +14,6 @@
         </ContainerComponent>
     </section>
 </template>
-<script setup>
-import ContainerComponent from '@/components/layout/ContainerComponent.vue'
-</script>
 <style scoped>
 .news {
     padding: 50px 0;

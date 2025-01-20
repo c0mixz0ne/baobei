@@ -12,9 +12,11 @@ const ymapkey = import.meta.env.VITE_YMAPKEY;
 
 app.use(createPinia());
 
-app.use(createYmaps({
-    apikey: ymapkey, // API mail - c0mix70ne@yandex.ru
-}));
+if(ymapkey) {
+	app.use(createYmaps({
+		apikey: ymapkey, // API mail - c0mix70ne@yandex.ru
+	}));
+};
 
 app.use(router);
 

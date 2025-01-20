@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import ContainerComponent from './layout/ContainerComponent.vue';
 import ButtonComponent from './ButtonComponent.vue';
 import { formatName, formatPhone } from '@/helpers/formatInput';

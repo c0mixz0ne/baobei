@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ContainerComponent from '@/components/layout/ContainerComponent.vue';
 import ButtonComponent from '@/components/ButtonComponent.vue';
 
@@ -9,8 +9,8 @@ import { validateName, validatePhone } from '@/helpers/validateInput';
 const name = ref('');
 const phone = ref('');
 
-const errorName = ref('');
-const errorPhone = ref('');
+const errorName = ref<string | undefined>('');
+const errorPhone = ref<string | undefined>('');
 
 
 const submitForm = () => {
@@ -25,16 +25,15 @@ const submitForm = () => {
     name.value = '';
     phone.value = '';
 
-}
+};
 
 const formatNameHandler = () => {
     name.value = formatName(name);
-}
+};
 
 const formatPhoneHandler = () => {
     phone.value = formatPhone(phone);
-}
-
+};
 </script>
 <template>
     <section class="form" id="form">

@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import TeacherSliderComponent from '@/components/TeacherSliderComponent.vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
+</script>
 <template>
     <section class="teacher">
         <ContainerComponent>
@@ -11,10 +15,6 @@
         <TeacherSliderComponent />
     </section>
 </template>
-<script lang="ts" setup>
-import TeacherSliderComponent from '@/components/TeacherSliderComponent.vue'
-import ContainerComponent from '@/components/layout/ContainerComponent.vue'
-</script>
 <style lang="scss" scoped>
 .teacher {
     padding: 90px 0;

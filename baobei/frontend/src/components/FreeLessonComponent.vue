@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import MainSliderComponent from '@/components/MainSliderComponent.vue'
+<script setup lang="ts">
+import MainSliderComponent from '@/components/MainSliderComponent.vue';
 </script>
 <template>
     <section class="carousel">

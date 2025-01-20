@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import ButtonComponent from '@/components/ButtonComponent.vue'
-import smoothScroll from '@/helpers/smoothScroll'
+// import ButtonComponent from '@/components/ButtonComponent.vue'
+// import smoothScroll from '@/helpers/smoothScroll'
 
 // const handlerAction = () => {
 //     smoothScroll("#form");
 // }
-
 </script>
 <template>
     <section class="recruitment">

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 </script>
 <template>

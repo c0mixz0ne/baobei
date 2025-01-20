@@ -1,14 +1,15 @@
-<script>
-import smoothScroll from '@/helpers/smoothScroll'
+<script lang="ts">
+// TODO: rewrite to script setup
+import smoothScroll from '@/helpers/smoothScroll';
 
-import slide1 from '@/assets/images/slider1.jpg'
-import slide2 from '@/assets/images/slider2.jpg'
+import slide1 from '@/assets/images/slider1.jpg';
+import slide2 from '@/assets/images/slider2.jpg';
 
 export default {
     data() {
         return {
             currentIndex: 0,
-            intervalId: null,
+            intervalId: 0,
             slides: [
                 {
                     background: `linear-gradient(rgba(44,55,69,0.8), rgba(44,55,69,0.6)), url(${slide1})`,
@@ -31,7 +32,7 @@ export default {
             this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length
         },
         startAutoPlay() {
-            this.intervalId = setInterval(this.nextSlide, 3000)
+            this.intervalId = Number(setInterval(this.nextSlide, 3000));
         },
         stopAutoPlay() {
             clearInterval(this.intervalId)

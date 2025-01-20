@@ -1,16 +1,3 @@
-<template>
-    <section :class="$style.teachers">
-        <ContainerComponent>
-            <div :class="$style.carousel">
-                <div :class="$style.inner">
-                    <div class="slide" v-for="(teacher, id) in teachers" :key="id">
-                        {{ teacher.name }}
-                    </div>
-                </div>
-            </div>
-        </ContainerComponent>
-    </section>
-</template>
 <script lang="ts" setup>
 
 import ContainerComponent from './layout/ContainerComponent.vue'
@@ -60,6 +47,19 @@ const teachers = [
     }
 ]
 </script>
+<template>
+    <section :class="$style.teachers">
+        <ContainerComponent>
+            <div :class="$style.carousel">
+                <div :class="$style.inner">
+                    <div class="slide" v-for="(teacher, id) in teachers" :key="id">
+                        {{ teacher.name }}
+                    </div>
+                </div>
+            </div>
+        </ContainerComponent>
+    </section>
+</template>
 <style lang="scss" module>
 .teachers {
     * {

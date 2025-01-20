@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang=ts>
 import 'vue3-carousel/dist/carousel.css'
 import ContainerComponent from './layout/ContainerComponent.vue'
 import { Carousel, Slide} from 'vue3-carousel'
@@ -117,20 +117,24 @@ const prev = () => carouselRef.value.prev();
 
         <div class="custom-arrows">
             <button class="prev-arrow" @click="prev">
-                <svg role="presentation" focusable="false" viewBox="0 0 8.6 14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <polyline fill="none" stroke="#000000" stroke-linejoin="butt" stroke-linecap="butt" stroke-width="2" points="1,1 7,7 1,13"></polyline> </svg>
+                <svg role="presentation" focusable="false" viewBox="0 0 8.6 14"> 
+					<polyline fill="none" stroke-linecap="butt" stroke-width="2" points="1,1 7,7 1,13"></polyline> 
+				</svg>
             </button>
             <button class="next-arrow" @click="next">
-                <svg role="presentation" focusable="false" viewBox="0 0 8.6 14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <polyline fill="none" stroke="#000000" stroke-linejoin="butt" stroke-linecap="butt" stroke-width="2" points="1,1 7,7 1,13"></polyline> </svg>
+                <svg role="presentation" focusable="false" viewBox="0 0 8.6 14"> 
+					<polyline fill="none" stroke-linecap="butt" stroke-width="2" points="1,1 7,7 1,13"></polyline> 
+				</svg>
             </button>
         </div>
     </ContainerComponent>
 </template>
 
 <style lang="scss" scoped>
-
 .carousel__slide{
     padding-bottom: 15px;
 }
+
 .slider-container{
     position: relative;
     .custom-arrows{
@@ -218,5 +222,4 @@ const prev = () => carouselRef.value.prev();
         }
     }
 }
-
 </style>

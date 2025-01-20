@@ -1,4 +1,4 @@
-import type { Ref } from "vue"
+import type { Ref } from 'vue'
 
 export const validateName = (name: Ref<string>) => {
     if (name.value.length === 0) {

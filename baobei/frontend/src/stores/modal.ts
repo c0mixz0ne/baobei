@@ -2,16 +2,16 @@ import { defineStore } from 'pinia'
 
 export const useModalStore = defineStore('modals', {
     state: () => ({
-        isShow: false,
+        isShow: false
     }),
     actions: {
         setIsShow(value: boolean) {
-          this.isShow = value
-        },
+            this.isShow = value
+        }
     },
     getters: {
         getIsShow(): boolean {
-          return this.isShow
-        },
-    },
+            return this.isShow
+        }
+    }
 })

@@ -1,9 +1,9 @@
 <script lang="ts">
 // TODO: rewrite to script setup
-import smoothScroll from '@/helpers/smoothScroll';
+import smoothScroll from '@/helpers/smoothScroll'
 
-import slide1 from '@/assets/images/slider1.jpg';
-import slide2 from '@/assets/images/slider2.jpg';
+import slide1 from '@/assets/images/slider1.jpg'
+import slide2 from '@/assets/images/slider2.jpg'
 
 export default {
     data() {
@@ -32,13 +32,13 @@ export default {
             this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length
         },
         startAutoPlay() {
-            this.intervalId = Number(setInterval(this.nextSlide, 3000));
+            this.intervalId = Number(setInterval(this.nextSlide, 3000))
         },
         stopAutoPlay() {
             clearInterval(this.intervalId)
         },
         buttonClick() {
-            smoothScroll("#form")
+            smoothScroll('#form')
         }
     },
     mounted() {

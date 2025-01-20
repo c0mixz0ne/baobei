@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 import ContainerComponent from './layout/ContainerComponent.vue'
 
 import teacher0 from '@/assets/images/mock.gif'

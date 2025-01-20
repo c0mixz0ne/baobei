@@ -1,105 +1,121 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import ContainerComponent from './layout/ContainerComponent.vue';
-import ButtonComponent from './ButtonComponent.vue';
-import { formatName, formatPhone } from '@/helpers/formatInput';
-import { validateName, validatePhone } from '@/helpers/validateInput';
+import { ref } from 'vue'
+import ContainerComponent from './layout/ContainerComponent.vue'
+import ButtonComponent from './ButtonComponent.vue'
+import { formatName, formatPhone } from '@/helpers/formatInput'
+import { validateName, validatePhone } from '@/helpers/validateInput'
 
-const typeEducation = ref<never[]>([]);
-const yearsOld = ref<never[]>([]);
-const formatLesson = ref<never[]>([]);
-const durationStudy = ref<never[]>([]);
-const studentName = ref('');
-const studentPhone = ref('');
-const studentWishes = ref<any>('');
+const typeEducation = ref<never[]>([])
+const yearsOld = ref<never[]>([])
+const formatLesson = ref<never[]>([])
+const durationStudy = ref<never[]>([])
+const studentName = ref('')
+const studentPhone = ref('')
+const studentWishes = ref<any>('')
 
-const errorName = ref<string | undefined>('');
-const errorPhone = ref<string | undefined>('');
-const formError = ref(false);
+const errorName = ref<string | undefined>('')
+const errorPhone = ref<string | undefined>('')
+const formError = ref(false)
 
 // TODO: fix typescript types
-const setCheckbox = (event: any, question: any, option: string) => {     
+const setCheckbox = (event: any, question: any, option: string) => {
     if (event.target.checked) {
         if (event.target.parentElement.querySelector('.custom-wrapper')) {
-            
-            event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').classList.add('show');
-            event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').focus();
+            event.target.parentElement
+                .querySelector('.custom-wrapper')
+                .querySelector('.custom')
+                .classList.add('show')
+            event.target.parentElement
+                .querySelector('.custom-wrapper')
+                .querySelector('.custom')
+                .focus()
         }
 
-        question.push(option);
-
+        question.push(option)
     } else {
         if (event.target.parentElement.querySelector('.custom-wrapper')) {
-            event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').classList.remove('show');
-            event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').value = '';
+            event.target.parentElement
+                .querySelector('.custom-wrapper')
+                .querySelector('.custom')
+                .classList.remove('show')
+            event.target.parentElement
+                .querySelector('.custom-wrapper')
+                .querySelector('.custom').value = ''
         }
 
-        const index = question.indexOf(option);
+        const index = question.indexOf(option)
 
-        question.splice(index, 1);
+        question.splice(index, 1)
     }
 }
 
 const customCheckboxHandler = (event: any, question: any) => {
-    const searchOption = 'Свой вариант';
+    const searchOption = 'Свой вариант'
 
-    const foundOption = question.find((question: any) => question.includes(searchOption));
+    const foundOption = question.find((question: any) => question.includes(searchOption))
 
-    const index = question.indexOf(foundOption);
+    const index = question.indexOf(foundOption)
 
     if (event.target.value.length) {
-        question[index] = `Свой вариант: ${event.target.value}`;
+        question[index] = `Свой вариант: ${event.target.value}`
     } else {
-        question[index] = 'Не указан';
-        event.target.value = 'Не указан';
-    }  
+        question[index] = 'Не указан'
+        event.target.value = 'Не указан'
+    }
 }
 
 const setRadio = (event: any, question: any, option: string) => {
     if (event.target.parentElement.querySelector('.custom-wrapper')) {
-        event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').classList.add('show');
-        event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').focus();
+        event.target.parentElement
+            .querySelector('.custom-wrapper')
+            .querySelector('.custom')
+            .classList.add('show')
+        event.target.parentElement.querySelector('.custom-wrapper').querySelector('.custom').focus()
     } else {
         // TODO: fix query
-        event.target.parentElement.parentElement.parentElement.querySelector('.custom').classList.remove('show');
-        event.target.parentElement.parentElement.parentElement.querySelector('.custom').value = '';
+        event.target.parentElement.parentElement.parentElement
+            .querySelector('.custom')
+            .classList.remove('show')
+        event.target.parentElement.parentElement.parentElement.querySelector('.custom').value = ''
 
-        question[0] = '';
+        question[0] = ''
     }
 
-    question[0] = option;        
+    question[0] = option
 }
 
 const customRadioHandler = (event: any, question: any) => {
-    question[0] = `Свой вариант: ${event.target.value.length ? event.target.value : 'Не указан'}`; 
+    question[0] = `Свой вариант: ${event.target.value.length ? event.target.value : 'Не указан'}`
 }
 
 const formatNameHandler = () => {
-    studentName.value = formatName(studentName);
+    studentName.value = formatName(studentName)
 }
 
 const formatPhoneHandler = () => {
-    studentPhone.value = formatPhone(studentPhone);
+    studentPhone.value = formatPhone(studentPhone)
 }
 
 const studentWishesComputed = () => {
-    studentWishes.value = studentWishes.value.charAt(0).toUpperCase() + studentWishes.value.slice(1);
+    studentWishes.value = studentWishes.value.charAt(0).toUpperCase() + studentWishes.value.slice(1)
 }
 
 const submitForm = () => {
-    validateQuestion();
+    validateQuestion()
 
-    errorName.value = validateName(studentName);
-    errorPhone.value = validatePhone(studentPhone);
+    errorName.value = validateName(studentName)
+    errorPhone.value = validatePhone(studentPhone)
 
-    if (!typeEducation.value.length ||
+    if (
+        !typeEducation.value.length ||
         !yearsOld.value.length ||
         !formatLesson.value.length ||
         !durationStudy.value.length ||
         !studentName.value.length ||
-        !studentPhone.value.length) {
-            formError.value = true;
-            return;
+        !studentPhone.value.length
+    ) {
+        formError.value = true
+        return
     }
 
     const formData = {
@@ -112,9 +128,9 @@ const submitForm = () => {
         'Ваши пожелания': studentWishes.value.length ? studentWishes.value : 'Не указано'
     }
 
-    formError.value = false;
+    formError.value = false
 
-    console.log(formData);
+    console.log(formData)
 
     // typeEducation.value = [];
     // yearsOld.value = [];
@@ -124,16 +140,14 @@ const submitForm = () => {
     // studentPhone.value = '';
     // studentWishes.value = '';
 
-
     document.querySelectorAll('.check[type=checkbox]:checked').forEach((input: any) => {
         // input.value = false;
-        console.log(input);
-        
-    });
+        console.log(input)
+    })
 
     document.querySelectorAll('.radio[name=radio]:checked').forEach((input: any) => {
         // input.value = false;
-        console.log(input);
+        console.log(input)
     })
 }
 
@@ -141,10 +155,10 @@ const validateQuestion = () => {
     document.querySelectorAll('.question').forEach((el) => {
         if (el.getAttribute('id')) {
             if (!el.querySelector('input')?.value) {
-                el.classList.add('error');
+                el.classList.add('error')
             } else {
-                el.classList.remove('error');
-            }         
+                el.classList.remove('error')
+            }
         }
     })
 }
@@ -155,102 +169,173 @@ const validateQuestion = () => {
         <ContainerComponent>
             <form @submit.prevent="submitForm()" class="testing-form">
                 <div id="question-1" class="question">
-                    <input :value="typeEducation" name="Какое направление вас заинтересовало?" type="hidden">
-                    <p class="question-title">
-                        Какое направление вас заинтересовало?
-                    </p>
+                    <input
+                        :value="typeEducation"
+                        name="Какое направление вас заинтересовало?"
+                        type="hidden"
+                    />
+                    <p class="question-title">Какое направление вас заинтересовало?</p>
                     <ul class="checkbox-list">
                         <li class="checkbox-item">
                             <label for="q-1-1">
-                                <input @input="setCheckbox($event, typeEducation, 'Русский язык')" id="q-1-1" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, typeEducation, 'Русский язык')"
+                                    id="q-1-1"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Русский язык</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-1-2">
-                                <input @input="setCheckbox($event, typeEducation, 'Английский язык')" id="q-1-2" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, typeEducation, 'Английский язык')"
+                                    id="q-1-2"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Английский язык</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-1-3">
-                                <input @input="setCheckbox($event, typeEducation, 'Математика')" id="q-1-3" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, typeEducation, 'Математика')"
+                                    id="q-1-3"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Математика</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-1-4">
-                                <input @input="setCheckbox($event, typeEducation, 'Дошкольная подготовка')" id="q-1-4" class="check" type="checkbox">
+                                <input
+                                    @input="
+                                        setCheckbox($event, typeEducation, 'Дошкольная подготовка')
+                                    "
+                                    id="q-1-4"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Дошкольная подготовка</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-1-5">
-                                <input @input="setCheckbox($event, typeEducation, 'Китайский язык')" id="q-1-5" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, typeEducation, 'Китайский язык')"
+                                    id="q-1-5"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Китайский язык</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-1-6">
-                                <input @input="setCheckbox($event, typeEducation, 'Свой вариант')" id="q-1-6" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, typeEducation, 'Свой вариант')"
+                                    id="q-1-6"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <div class="custom-wrapper">
                                     <span>Свой вариант</span>
-                                    <input @blur="customCheckboxHandler($event, typeEducation)" class="custom" type="text" maxlength="250">
+                                    <input
+                                        @blur="customCheckboxHandler($event, typeEducation)"
+                                        class="custom"
+                                        type="text"
+                                        maxlength="250"
+                                    />
                                 </div>
                             </label>
                         </li>
                     </ul>
                 </div>
                 <div id="question-2" class="question">
-                    <input :value="yearsOld" name="Сколько лет поступающему на обучение?" type="hidden">
-                    <p class="question-title">
-                        Сколько лет поступающему на обучение?
-                    </p>
+                    <input
+                        :value="yearsOld"
+                        name="Сколько лет поступающему на обучение?"
+                        type="hidden"
+                    />
+                    <p class="question-title">Сколько лет поступающему на обучение?</p>
                     <ul class="checkbox-list">
                         <li class="checkbox-item">
                             <label for="q-2-1">
-                                <input @input="setCheckbox($event, yearsOld, 'Меньше 5')" id="q-2-1" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, yearsOld, 'Меньше 5')"
+                                    id="q-2-1"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Меньше 5</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-2-2">
-                                <input @input="setCheckbox($event, yearsOld, '5-7 лет')" id="q-2-2" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, yearsOld, '5-7 лет')"
+                                    id="q-2-2"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>5-7 лет</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-2-3">
-                                <input @input="setCheckbox($event, yearsOld, '7-10 лет')" id="q-2-3" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, yearsOld, '7-10 лет')"
+                                    id="q-2-3"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>7-10 лет</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-2-4">
-                                <input @input="setCheckbox($event, yearsOld, '10-14 лет')" id="q-2-4" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, yearsOld, '10-14 лет')"
+                                    id="q-2-4"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>10-14 лет</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-2-5">
-                                <input @input="setCheckbox($event, yearsOld, '14-17 лет')" id="q-2-5" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, yearsOld, '14-17 лет')"
+                                    id="q-2-5"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>14-17 лет</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-2-6">
-                                <input @input="setCheckbox($event, yearsOld, 'Больше 17')" id="q-2-6" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, yearsOld, 'Больше 17')"
+                                    id="q-2-6"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Больше 17</span>
                             </label>
@@ -258,123 +343,196 @@ const validateQuestion = () => {
                     </ul>
                 </div>
                 <div id="question-3" class="question">
-                    <input :value="formatLesson" name="Какой формат занятий вам интересен?" type="hidden">
-                    <p class="question-title">
-                        Какой формат занятий вам интересен?
-                    </p>
+                    <input
+                        :value="formatLesson"
+                        name="Какой формат занятий вам интересен?"
+                        type="hidden"
+                    />
+                    <p class="question-title">Какой формат занятий вам интересен?</p>
                     <ul class="checkbox-list">
                         <li class="checkbox-item">
                             <label for="q-3-1">
-                                <input @input="setCheckbox($event, formatLesson, 'Групповые')" id="q-3-1" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, formatLesson, 'Групповые')"
+                                    id="q-3-1"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Групповые</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-3-2">
-                                <input @input="setCheckbox($event, formatLesson, 'Индивидуальные')" id="q-3-2" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, formatLesson, 'Индивидуальные')"
+                                    id="q-3-2"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Индивидуальные</span>
                             </label>
                         </li>
                         <li class="checkbox-item">
                             <label for="q-3-3">
-                                <input @input="setCheckbox($event, formatLesson, 'Свой вариант')" id="q-3-3" class="check" type="checkbox">
+                                <input
+                                    @input="setCheckbox($event, formatLesson, 'Свой вариант')"
+                                    id="q-3-3"
+                                    class="check"
+                                    type="checkbox"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <div class="custom-wrapper">
                                     <span>Свой вариант</span>
-                                    <input @blur="customCheckboxHandler($event, formatLesson)" class="custom" type="text" maxlength="250">
+                                    <input
+                                        @blur="customCheckboxHandler($event, formatLesson)"
+                                        class="custom"
+                                        type="text"
+                                        maxlength="250"
+                                    />
                                 </div>
                             </label>
                         </li>
                     </ul>
                 </div>
                 <div id="question-4" class="question">
-                    <input :value="durationStudy" name="Срок обучения для достижения вашей цели?" type="hidden">
-                    <p class="question-title">
-                        Срок обучения для достижения вашей цели?
-                    </p>
+                    <input
+                        :value="durationStudy"
+                        name="Срок обучения для достижения вашей цели?"
+                        type="hidden"
+                    />
+                    <p class="question-title">Срок обучения для достижения вашей цели?</p>
                     <ul class="radio-list">
                         <li class="radio-item">
                             <label for="q-4-1">
-                                <input @input="setRadio($event, durationStudy, 'Пару месяцев')" id="q-4-1" class="check" type="radio" name="radio">
+                                <input
+                                    @input="setRadio($event, durationStudy, 'Пару месяцев')"
+                                    id="q-4-1"
+                                    class="check"
+                                    type="radio"
+                                    name="radio"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Пару месяцев</span>
                             </label>
                         </li>
                         <li class="radio-item">
                             <label for="q-4-2">
-                                <input @input="setRadio($event, durationStudy, 'Пол года')" id="q-4-2" class="check" type="radio" name="radio">
+                                <input
+                                    @input="setRadio($event, durationStudy, 'Пол года')"
+                                    id="q-4-2"
+                                    class="check"
+                                    type="radio"
+                                    name="radio"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Пол года</span>
                             </label>
                         </li>
                         <li class="radio-item">
                             <label for="q-4-3">
-                                <input @input="setRadio($event, durationStudy, 'Год')" id="q-4-3" class="check" type="radio" name="radio">
+                                <input
+                                    @input="setRadio($event, durationStudy, 'Год')"
+                                    id="q-4-3"
+                                    class="check"
+                                    type="radio"
+                                    name="radio"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Год</span>
                             </label>
                         </li>
                         <li class="radio-item">
                             <label for="q-4-4">
-                                <input @input="setRadio($event, durationStudy, 'Больше года')" id="q-4-4" class="check" type="radio" name="radio">
+                                <input
+                                    @input="setRadio($event, durationStudy, 'Больше года')"
+                                    id="q-4-4"
+                                    class="check"
+                                    type="radio"
+                                    name="radio"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <span>Больше года</span>
                             </label>
                         </li>
                         <li class="radio-item">
                             <label for="q-4-5">
-                                <input @input="setRadio($event, durationStudy, 'Свой вариант')" id="q-4-5" class="check" type="radio" name="radio">
+                                <input
+                                    @input="setRadio($event, durationStudy, 'Свой вариант')"
+                                    id="q-4-5"
+                                    class="check"
+                                    type="radio"
+                                    name="radio"
+                                />
                                 <div class="checkbox-indicator"></div>
                                 <div class="custom-wrapper">
                                     <span>Свой вариант</span>
-                                    <input @blur="customRadioHandler($event, durationStudy)" class="custom" type="text" maxlength="250">
+                                    <input
+                                        @blur="customRadioHandler($event, durationStudy)"
+                                        class="custom"
+                                        type="text"
+                                        maxlength="250"
+                                    />
                                 </div>
                             </label>
                         </li>
                     </ul>
                 </div>
                 <div class="question">
-                    <p class="question-title">
-                        Ваше имя
-                    </p>
-                    <input @input="formatNameHandler" name="name" class="long-input" v-model="studentName" type="text">
+                    <p class="question-title">Ваше имя</p>
+                    <input
+                        @input="formatNameHandler"
+                        name="name"
+                        class="long-input"
+                        v-model="studentName"
+                        type="text"
+                    />
                     <label v-if="errorName" for="name">{{ errorName }}</label>
                 </div>
                 <div class="question">
-                    <p class="question-title">
-                        Ваш телефон
-                    </p>
-                    <input @input="formatPhoneHandler" name="phone" class="long-input" v-model="studentPhone" type="text">
+                    <p class="question-title">Ваш телефон</p>
+                    <input
+                        @input="formatPhoneHandler"
+                        name="phone"
+                        class="long-input"
+                        v-model="studentPhone"
+                        type="text"
+                    />
                     <label v-if="errorPhone" for="phone">{{ errorPhone }}</label>
                 </div>
                 <div class="question">
-                    <p class="question-title">
-                        Ваши пожелания
-                    </p>
-                    <input class="long-input" @input="studentWishesComputed" v-model="studentWishes" type="text" maxlength="250">
+                    <p class="question-title">Ваши пожелания</p>
+                    <input
+                        class="long-input"
+                        @input="studentWishesComputed"
+                        v-model="studentWishes"
+                        type="text"
+                        maxlength="250"
+                    />
                 </div>
                 <ButtonComponent type="submit">Отправить форму</ButtonComponent>
-                <span v-if="formError" class="form-error">Пожалуйста, заполните все обязательные поля</span>
+                <span v-if="formError" class="form-error"
+                    >Пожалуйста, заполните все обязательные поля</span
+                >
             </form>
         </ContainerComponent>
     </section>
 </template>
 
 <style land="scss" scoped>
-.testing{
+.testing {
     padding: 100px 0;
 
     .container {
         max-width: 800px;
     }
 
-    .testing-form{
+    .testing-form {
         display: flex;
         flex-direction: column;
-        
-        .question{
+
+        .question {
             margin-bottom: 30px;
             padding: 12px;
             position: relative;
@@ -387,12 +545,12 @@ const validateQuestion = () => {
                 bottom: -15px;
                 font-size: 12px;
             }
-            &.error{
+            &.error {
                 outline: 1px solid var(--error);
                 position: relative;
                 border-radius: 5px;
-                &::after{
-                    content: "Обязательное поле";
+                &::after {
+                    content: 'Обязательное поле';
                     position: absolute;
                     right: 10px;
                     background-color: var(--white);
@@ -409,12 +567,10 @@ const validateQuestion = () => {
                 border: none;
                 border-bottom: 1px solid var(--black);
                 font-size: var(--font-size);
-
-                
             }
 
             .question-title {
-                color:var(--black);
+                color: var(--black);
                 font-size: var(--font-size);
                 font-weight: bold;
                 margin-bottom: 15px;
@@ -425,10 +581,9 @@ const validateQuestion = () => {
                 margin: 0;
                 padding: 0;
 
-                .checkbox-item{
+                .checkbox-item {
                     display: flex;
                     margin-bottom: 15px;
-
 
                     label {
                         display: flex;
@@ -436,26 +591,26 @@ const validateQuestion = () => {
                         width: 100%;
                         font-size: var(--font-size);
 
-                        span{
+                        span {
                             font-weight: lighter;
                         }
                     }
 
-                    .check{
+                    .check {
                         opacity: 0;
                         z-index: -1;
                         position: absolute;
 
-                        &:checked ~ .checkbox-indicator { 
+                        &:checked ~ .checkbox-indicator {
                             opacity: 1;
-                            
-                            &::after{
+
+                            &::after {
                                 display: block;
                             }
-                       }
+                        }
                     }
 
-                    .checkbox-indicator{
+                    .checkbox-indicator {
                         min-width: 20px;
                         max-width: 20px;
                         min-height: 20px;
@@ -463,13 +618,13 @@ const validateQuestion = () => {
                         border: 2px solid var(--black);
                         position: relative;
                         margin-right: 10px;
-                        opacity: .5;
+                        opacity: 0.5;
 
-                        &::after{
+                        &::after {
                             display: none;
                             border: solid var(--pink);
                             border-width: 0 2px 2px 0;
-                            content: "";
+                            content: '';
                             height: 24px;
                             left: 4px;
                             position: absolute;
@@ -479,11 +634,11 @@ const validateQuestion = () => {
                         }
                     }
 
-                    .custom-wrapper{
+                    .custom-wrapper {
                         display: flex;
                         width: 100%;
 
-                        span{
+                        span {
                             flex-shrink: 0;
                         }
 
@@ -497,7 +652,7 @@ const validateQuestion = () => {
                             border-bottom: 1px solid var(--black);
                             width: 100%;
                             font-size: var(--font-size);
-                            &.show{
+                            &.show {
                                 display: block;
                             }
 
@@ -505,10 +660,9 @@ const validateQuestion = () => {
                                 outline: none;
                             }
                         }
-
                     }
 
-                    &:last-child{
+                    &:last-child {
                         margin-bottom: 0;
                     }
                 }
@@ -519,10 +673,9 @@ const validateQuestion = () => {
                 margin: 0;
                 padding: 0;
 
-                .radio-item{
+                .radio-item {
                     display: flex;
                     margin-bottom: 15px;
-
 
                     label {
                         display: flex;
@@ -530,26 +683,26 @@ const validateQuestion = () => {
                         width: 100%;
                         font-size: var(--font-size);
 
-                        span{
+                        span {
                             font-weight: lighter;
                         }
                     }
 
-                    .check{
+                    .check {
                         opacity: 0;
                         z-index: -1;
                         position: absolute;
 
-                        &:checked ~ .checkbox-indicator { 
+                        &:checked ~ .checkbox-indicator {
                             opacity: 1;
-                            
-                            &::after{
+
+                            &::after {
                                 display: block;
                             }
-                       }
+                        }
                     }
 
-                    .checkbox-indicator{
+                    .checkbox-indicator {
                         min-width: 20px;
                         max-width: 20px;
                         min-height: 20px;
@@ -558,13 +711,13 @@ const validateQuestion = () => {
                         border: 2px solid var(--black);
                         position: relative;
                         margin-right: 10px;
-                        opacity: .5;
+                        opacity: 0.5;
 
-                        &::after{
+                        &::after {
                             display: none;
                             border: solid var(--pink);
                             border-width: 0 2px 2px 0;
-                            content: "";
+                            content: '';
                             height: 24px;
                             left: 4px;
                             position: absolute;
@@ -574,11 +727,11 @@ const validateQuestion = () => {
                         }
                     }
 
-                    .custom-wrapper{
+                    .custom-wrapper {
                         display: flex;
                         width: 100%;
 
-                        span{
+                        span {
                             flex-shrink: 0;
                         }
 
@@ -592,7 +745,7 @@ const validateQuestion = () => {
                             border-bottom: 1px solid var(--black);
                             width: 100%;
                             font-size: var(--font-size);
-                            &.show{
+                            &.show {
                                 display: block;
                             }
 
@@ -600,10 +753,9 @@ const validateQuestion = () => {
                                 outline: none;
                             }
                         }
-
                     }
 
-                    &:last-child{
+                    &:last-child {
                         margin-bottom: 0;
                     }
                 }
@@ -614,7 +766,7 @@ const validateQuestion = () => {
             }
         }
 
-        .form-error{
+        .form-error {
             padding: 0 12px;
             margin-top: 20px;
             color: var(--error);

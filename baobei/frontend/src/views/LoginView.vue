@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    const login = () => {
-        alert('Авторизация в разработке');
-    }
+const login = () => {
+    alert('Авторизация в разработке')
+}
 </script>
 <template>
     <section class="login">

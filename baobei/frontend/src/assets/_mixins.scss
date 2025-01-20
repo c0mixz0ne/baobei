@@ -27,7 +27,7 @@
 }
 
 @mixin custom-breakpoint($resolution) {
-    @media(max-width: $resolution) {
+    @media (max-width: $resolution) {
         @content;
     }
 }

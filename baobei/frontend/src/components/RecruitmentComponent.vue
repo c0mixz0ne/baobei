@@ -18,7 +18,7 @@
 <style lang="scss" scoped>
 .recruitment {
     padding: 30px;
-    .button-link{
+    .button-link {
         color: var(--white);
         background-color: var(--button-pink);
         border: none;
@@ -34,10 +34,11 @@
         font-size: var(--font-size);
     }
 
-    .button, .button-link{
+    .button,
+    .button-link {
         margin-top: 50px;
     }
-    
+
     .image-container {
         background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
             url(@/assets/images/background2.jpg);

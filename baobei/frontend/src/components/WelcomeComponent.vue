@@ -1,8 +1,6 @@
 <template>
     <section class="welcome">
-        <slot>
-            Данных нет
-        </slot>
+        <slot> Данных нет </slot>
     </section>
 </template>
 <style lang="scss" scoped>
@@ -18,15 +16,15 @@
     background-position: center center;
     background-repeat: no-repeat;
     padding: 0 30px;
-    &.program{
+    &.program {
         background-image: linear-gradient(rgba(44, 55, 69, 0.8), rgba(44, 55, 69, 0.6)),
-        url(@/assets/images/background-program.jpg);
-		height: calc(60svh - 90px);
+            url(@/assets/images/background-program.jpg);
+        height: calc(60svh - 90px);
     }
-    &.groups{
-        background-image: linear-gradient(rgba(240, 217, 219, 0.60), rgba(147, 114, 117, 0.80)),
-        url(@/assets/images/background-group.jpg);
-		height: calc(80svh - 90px);
+    &.groups {
+        background-image: linear-gradient(rgba(240, 217, 219, 0.6), rgba(147, 114, 117, 0.8)),
+            url(@/assets/images/background-group.jpg);
+        height: calc(80svh - 90px);
         background-position: center;
     }
     :slotted(h1) {
@@ -37,13 +35,13 @@
             display: block;
         }
 
-		@include breakpoint(sm) {
-			font-size: 42px;
-		}
+        @include breakpoint(sm) {
+            font-size: 42px;
+        }
 
         @include breakpoint(xs) {
-			font-size: 32px;
-		}
+            font-size: 32px;
+        }
     }
     :slotted(h2) {
         color: var(--white);

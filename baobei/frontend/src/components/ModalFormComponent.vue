@@ -1,47 +1,46 @@
 <script lang="ts" setup>
-import ButtonComponent from '@/components/ButtonComponent.vue';
-import { onMounted, onUnmounted, ref } from 'vue';
-import { formatName, formatPhone } from '@/helpers/formatInput';
-import { validateName, validatePhone } from '@/helpers/validateInput';
-import { useModalStore } from '@/stores/modal';
+import ButtonComponent from '@/components/ButtonComponent.vue'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { formatName, formatPhone } from '@/helpers/formatInput'
+import { validateName, validatePhone } from '@/helpers/validateInput'
+import { useModalStore } from '@/stores/modal'
 
-onMounted(() => (document.body.style.overflow = 'hidden'));
+onMounted(() => (document.body.style.overflow = 'hidden'))
 
-onUnmounted(() => (document.body.style.overflow = ''));
+onUnmounted(() => (document.body.style.overflow = ''))
 
-const modalStore = useModalStore();
+const modalStore = useModalStore()
 
 const close = () => {
-    modalStore.setIsShow(false);
+    modalStore.setIsShow(false)
 }
 
-const name = ref('');
-const phone = ref('');
+const name = ref('')
+const phone = ref('')
 
 // TODO: fix types
-const errorName = ref<string | undefined>('');
-const errorPhone = ref<string | undefined>('');
+const errorName = ref<string | undefined>('')
+const errorPhone = ref<string | undefined>('')
 
 const submitForm = () => {
-    errorName.value = validateName(name);
-    errorPhone.value = validatePhone(phone);
+    errorName.value = validateName(name)
+    errorPhone.value = validatePhone(phone)
 
     if (errorName.value || errorPhone.value) {
-        return;
+        return
     }
 
-    alert('submit');
-    name.value = '';
-    phone.value = '';
-
+    alert('submit')
+    name.value = ''
+    phone.value = ''
 }
 
 const formatNameHandler = () => {
-    name.value = formatName(name);
+    name.value = formatName(name)
 }
 
 const formatPhoneHandler = () => {
-    phone.value = formatPhone(phone);
+    phone.value = formatPhone(phone)
 }
 </script>
 <template>
@@ -50,19 +49,30 @@ const formatPhoneHandler = () => {
             <button class="modal-close" @click="close">
                 <svg viewBox="0 0 50 50">
                     <path
-                        d="M25,2C12.319,2,2,12.319,2,25s10.319,23,23,23s23-10.319,23-23S37.681,2,25,2z M33.71,32.29c0.39,0.39,0.39,1.03,0,1.42	C33.51,33.9,33.26,34,33,34s-0.51-0.1-0.71-0.29L25,26.42l-7.29,7.29C17.51,33.9,17.26,34,17,34s-0.51-0.1-0.71-0.29	c-0.39-0.39-0.39-1.03,0-1.42L23.58,25l-7.29-7.29c-0.39-0.39-0.39-1.03,0-1.42c0.39-0.39,1.03-0.39,1.42,0L25,23.58l7.29-7.29	c0.39-0.39,1.03-0.39,1.42,0c0.39,0.39,0.39,1.03,0,1.42L26.42,25L33.71,32.29z">
-                    </path>
+                        d="M25,2C12.319,2,2,12.319,2,25s10.319,23,23,23s23-10.319,23-23S37.681,2,25,2z M33.71,32.29c0.39,0.39,0.39,1.03,0,1.42	C33.51,33.9,33.26,34,33,34s-0.51-0.1-0.71-0.29L25,26.42l-7.29,7.29C17.51,33.9,17.26,34,17,34s-0.51-0.1-0.71-0.29	c-0.39-0.39-0.39-1.03,0-1.42L23.58,25l-7.29-7.29c-0.39-0.39-0.39-1.03,0-1.42c0.39-0.39,1.03-0.39,1.42,0L25,23.58l7.29-7.29	c0.39-0.39,1.03-0.39,1.42,0c0.39,0.39,0.39,1.03,0,1.42L26.42,25L33.71,32.29z"
+                    ></path>
                 </svg>
             </button>
             <span class="modal-title">Форма для связи</span>
             <form @submit.prevent="submitForm()">
                 <div class="input-wrapper">
-                    <input name="name" v-model="name" @input="formatNameHandler" placeholder="Ваше имя" type="text" />
+                    <input
+                        name="name"
+                        v-model="name"
+                        @input="formatNameHandler"
+                        placeholder="Ваше имя"
+                        type="text"
+                    />
                     <label v-if="errorName" for="name">{{ errorName }}</label>
                 </div>
                 <div class="input-wrapper">
-                    <input name="phone" v-model="phone" @input="formatPhoneHandler" placeholder="+7 (999) 999-99-99"
-                        type="tel" />
+                    <input
+                        name="phone"
+                        v-model="phone"
+                        @input="formatPhoneHandler"
+                        placeholder="+7 (999) 999-99-99"
+                        type="tel"
+                    />
                     <label v-if="errorPhone" for="phone">{{ errorPhone }}</label>
                 </div>
                 <ButtonComponent type="submit"> Отправить </ButtonComponent>
@@ -114,7 +124,7 @@ const formatPhoneHandler = () => {
                     line-height: 60px;
                     font-size: 16px;
                     width: 100%;
-                    border: 1px solid var(--pink)
+                    border: 1px solid var(--pink);
                 }
             }
         }

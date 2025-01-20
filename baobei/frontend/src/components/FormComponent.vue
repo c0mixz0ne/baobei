@@ -1,39 +1,37 @@
 <script setup lang="ts">
-import ContainerComponent from '@/components/layout/ContainerComponent.vue';
-import ButtonComponent from '@/components/ButtonComponent.vue';
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
+import ButtonComponent from '@/components/ButtonComponent.vue'
 
-import { ref } from 'vue';
-import { formatName, formatPhone } from '@/helpers/formatInput';
-import { validateName, validatePhone } from '@/helpers/validateInput';
+import { ref } from 'vue'
+import { formatName, formatPhone } from '@/helpers/formatInput'
+import { validateName, validatePhone } from '@/helpers/validateInput'
 
-const name = ref('');
-const phone = ref('');
+const name = ref('')
+const phone = ref('')
 
-const errorName = ref<string | undefined>('');
-const errorPhone = ref<string | undefined>('');
-
+const errorName = ref<string | undefined>('')
+const errorPhone = ref<string | undefined>('')
 
 const submitForm = () => {
-    errorName.value = validateName(name);
-    errorPhone.value = validatePhone(phone);
+    errorName.value = validateName(name)
+    errorPhone.value = validatePhone(phone)
 
     if (errorName.value || errorPhone.value) {
-        return;
+        return
     }
-    
-    alert('submit');
-    name.value = '';
-    phone.value = '';
 
-};
+    alert('submit')
+    name.value = ''
+    phone.value = ''
+}
 
 const formatNameHandler = () => {
-    name.value = formatName(name);
-};
+    name.value = formatName(name)
+}
 
 const formatPhoneHandler = () => {
-    phone.value = formatPhone(phone);
-};
+    phone.value = formatPhone(phone)
+}
 </script>
 <template>
     <section class="form" id="form">
@@ -42,11 +40,23 @@ const formatPhoneHandler = () => {
             <h3>Оставьте свои контактные данные, и наш администратор свяжется с вами</h3>
             <form @submit.prevent="submitForm()">
                 <div class="input-wrapper">
-                    <input name="name" v-model="name" @input="formatNameHandler" placeholder="Ваше имя" type="text"/>
+                    <input
+                        name="name"
+                        v-model="name"
+                        @input="formatNameHandler"
+                        placeholder="Ваше имя"
+                        type="text"
+                    />
                     <label v-if="errorName" for="name">{{ errorName }}</label>
                 </div>
                 <div class="input-wrapper">
-                    <input name="phone" v-model="phone" @input="formatPhoneHandler" placeholder="+7 (999) 999-99-99" type="tel"/>
+                    <input
+                        name="phone"
+                        v-model="phone"
+                        @input="formatPhoneHandler"
+                        placeholder="+7 (999) 999-99-99"
+                        type="tel"
+                    />
                     <label v-if="errorPhone" for="phone">{{ errorPhone }}</label>
                 </div>
                 <ButtonComponent type="submit"> Заказать звонок </ButtonComponent>
@@ -84,7 +94,7 @@ const formatPhoneHandler = () => {
             display: flex;
             justify-content: space-between;
             gap: 10px;
-            .input-wrapper  {
+            .input-wrapper {
                 width: 33.3%;
                 position: relative;
                 label {

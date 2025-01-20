@@ -1,5 +1,5 @@
 <script setup>
-import ContainerComponent from '@/components/layout/ContainerComponent.vue';
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 </script>
 <template>
     <section class="news">

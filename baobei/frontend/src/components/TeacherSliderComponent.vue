@@ -1,7 +1,7 @@
-<script setup lang=ts>
+<script setup lang="ts">
 import 'vue3-carousel/dist/carousel.css'
 import ContainerComponent from './layout/ContainerComponent.vue'
-import { Carousel, Slide} from 'vue3-carousel'
+import { Carousel, Slide } from 'vue3-carousel'
 import { ref } from 'vue'
 
 import teacher0 from '@/assets/images/av.jpg'
@@ -13,11 +13,11 @@ import teacher5 from '@/assets/images/sk.jpg'
 
 // Carousel configuration
 const config = {
-	autoplay: 5000,
-	wrapAround: true,
-	pauseAutoplayOnHover: true,
-	mouseDrag: true,
-	touchDrag: true,
+    autoplay: 5000,
+    wrapAround: true,
+    pauseAutoplayOnHover: true,
+    mouseDrag: true,
+    touchDrag: true,
     itemsToShow: 1,
     snapAlign: 'center',
     gap: 40,
@@ -89,12 +89,11 @@ const cards = [
     }
 ]
 
-const carouselRef = ref();
-const currentSlide = ref(0);
+const carouselRef = ref()
+const currentSlide = ref(0)
 
-const next = () => carouselRef.value.next();
-const prev = () => carouselRef.value.prev();
-
+const next = () => carouselRef.value.next()
+const prev = () => carouselRef.value.prev()
 </script>
 
 <template>
@@ -103,66 +102,77 @@ const prev = () => carouselRef.value.prev();
             <Slide v-for="card in cards" :key="card">
                 <div class="carousel__item">
                     <img :src="card.photo" alt="Аватар" />
-					<div class="slider-content">
-						<div class="slider-name">
-							{{card.name}}
-						</div>
-						<div class="slider-text">
-							{{card.text}}
-						</div>
-					</div>
+                    <div class="slider-content">
+                        <div class="slider-name">
+                            {{ card.name }}
+                        </div>
+                        <div class="slider-text">
+                            {{ card.text }}
+                        </div>
+                    </div>
                 </div>
             </Slide>
         </Carousel>
 
         <div class="custom-arrows">
             <button class="prev-arrow" @click="prev">
-                <svg role="presentation" focusable="false" viewBox="0 0 8.6 14"> 
-					<polyline fill="none" stroke-linecap="butt" stroke-width="2" points="1,1 7,7 1,13"></polyline> 
-				</svg>
+                <svg role="presentation" focusable="false" viewBox="0 0 8.6 14">
+                    <polyline
+                        fill="none"
+                        stroke-linecap="butt"
+                        stroke-width="2"
+                        points="1,1 7,7 1,13"
+                    ></polyline>
+                </svg>
             </button>
             <button class="next-arrow" @click="next">
-                <svg role="presentation" focusable="false" viewBox="0 0 8.6 14"> 
-					<polyline fill="none" stroke-linecap="butt" stroke-width="2" points="1,1 7,7 1,13"></polyline> 
-				</svg>
+                <svg role="presentation" focusable="false" viewBox="0 0 8.6 14">
+                    <polyline
+                        fill="none"
+                        stroke-linecap="butt"
+                        stroke-width="2"
+                        points="1,1 7,7 1,13"
+                    ></polyline>
+                </svg>
             </button>
         </div>
     </ContainerComponent>
 </template>
 
 <style lang="scss" scoped>
-.carousel__slide{
+.carousel__slide {
     padding-bottom: 15px;
 }
 
-.slider-container{
+.slider-container {
     position: relative;
-    .custom-arrows{
+    .custom-arrows {
         display: contents;
-        .prev-arrow, .next-arrow {
-        position: absolute;
-        top: 50%;
-        background: transparent;
-        border: 1px solid var(--black);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-            svg{
+        .prev-arrow,
+        .next-arrow {
+            position: absolute;
+            top: 50%;
+            background: transparent;
+            border: 1px solid var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            svg {
                 width: 14px;
                 height: 8px;
-				polyline{
-					stroke: var(--black);
-				}
+                polyline {
+                    stroke: var(--black);
+                }
             }
         }
-        .prev-arrow{
+        .prev-arrow {
             left: -40px;
-            svg{
+            svg {
                 transform: rotate(180deg);
             }
         }
@@ -187,38 +197,38 @@ const prev = () => carouselRef.value.prev();
         border-top: 1px solid var(--border-pink);
         border-left: 1px solid var(--border-pink);
     }
-	.slider-content{
-		padding: 18px 20px;
-		.slider-name{
-			text-align: left;
-			font-weight: bold;
-			font-size: 16px;
-
-		}
-		.slider-text{
-			margin-top: 8px;
-			text-align: left;
-			font-size: 14px;
+    .slider-content {
+        padding: 18px 20px;
+        .slider-name {
+            text-align: left;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .slider-text {
+            margin-top: 8px;
+            text-align: left;
+            font-size: 14px;
             font-weight: lighter;
-		}
-	}
+        }
+    }
 }
 
 @include custom-breakpoint(1420px) {
-    .slider-container{
-        .custom-arrows{
-            .prev-arrow, .next-arrow{
+    .slider-container {
+        .custom-arrows {
+            .prev-arrow,
+            .next-arrow {
                 border: 1px solid var(--white);
-                svg{
-                    polyline{
+                svg {
+                    polyline {
                         stroke: var(--white);
                     }
                 }
             }
-            .prev-arrow{
+            .prev-arrow {
                 left: 20px;
             }
-            .next-arrow{
+            .next-arrow {
                 right: 20px;
             }
         }

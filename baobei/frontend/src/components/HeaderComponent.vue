@@ -1,37 +1,37 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-import { ref, onMounted, onUnmounted, watch } from 'vue';
-import ContainerComponent from '@/components/layout/ContainerComponent.vue';
+import { RouterLink } from 'vue-router'
+import { ref, onMounted, onUnmounted } from 'vue'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 
-const mobileMenuIsOpen = ref<boolean>(false);
+const mobileMenuIsOpen = ref<boolean>(false)
 
 const toggleMobileMenu = () => {
-    mobileMenuIsOpen.value = !mobileMenuIsOpen.value;
-};
+    mobileMenuIsOpen.value = !mobileMenuIsOpen.value
+}
 
 const resizeHandler = () => {
     if (window.innerWidth > 575) {
-        mobileMenuIsOpen.value = false;
+        mobileMenuIsOpen.value = false
     }
-};
+}
 
 const scrollHandler = () => {
     if (mobileMenuIsOpen.value) {
-        mobileMenuIsOpen.value = false;
+        mobileMenuIsOpen.value = false
     }
-};
+}
 
 onMounted(() => {
-    resizeHandler();
-    window.addEventListener('resize', resizeHandler, {passive: true});
-    window.addEventListener('scroll', scrollHandler, {passive: true});
-});
+    resizeHandler()
+    window.addEventListener('resize', resizeHandler, { passive: true })
+    window.addEventListener('scroll', scrollHandler, { passive: true })
+})
 
 onUnmounted(() => {
-    resizeHandler();
-    window.removeEventListener('resize', resizeHandler);
-    window.removeEventListener('scroll', scrollHandler);
-});
+    resizeHandler()
+    window.removeEventListener('resize', resizeHandler)
+    window.removeEventListener('scroll', scrollHandler)
+})
 </script>
 <template>
     <header class="header">
@@ -58,10 +58,14 @@ onUnmounted(() => {
                     <li>
                         <button @click="toggleMobileMenu" class="burger-menu">
                             <svg v-if="!mobileMenuIsOpen" viewBox="0 0 50 50">
-                                <path d="M 0 9 L 0 11 L 50 11 L 50 9 Z M 0 24 L 0 26 L 50 26 L 50 24 Z M 0 39 L 0 41 L 50 41 L 50 39 Z"></path>
+                                <path
+                                    d="M 0 9 L 0 11 L 50 11 L 50 9 Z M 0 24 L 0 26 L 50 26 L 50 24 Z M 0 39 L 0 41 L 50 41 L 50 39 Z"
+                                ></path>
                             </svg>
                             <svg v-if="mobileMenuIsOpen" viewBox="0 0 50 50">
-                                <path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"></path>
+                                <path
+                                    d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"
+                                ></path>
                             </svg>
                         </button>
                     </li>
@@ -109,7 +113,7 @@ onUnmounted(() => {
             width: 100%;
             margin-left: 10px;
 
-            ul{
+            ul {
                 display: flex;
                 gap: 15px;
                 list-style-type: none;
@@ -119,7 +123,7 @@ onUnmounted(() => {
                     display: none;
                 }
 
-                li{
+                li {
                     a {
                         text-decoration: none;
                         color: var(--black);
@@ -128,27 +132,26 @@ onUnmounted(() => {
                     a.router-link-active {
                         color: var(--pink);
                     }
-                    button.burger-menu{
+                    button.burger-menu {
                         background-color: transparent;
                         border: 0;
                         cursor: pointer;
                         padding: 0;
-                        svg{
+                        svg {
                             width: 25px;
                             height: 25px;
                         }
                     }
                 }
 
-
-                & :last-child{
+                & :last-child {
                     margin-left: auto;
                 }
             }
         }
     }
 
-    .mobile-menu{
+    .mobile-menu {
         position: absolute;
         width: 100%;
         height: 50px;
@@ -156,7 +159,7 @@ onUnmounted(() => {
         left: 0;
         background-color: var(--white-opacity);
 
-        ul{
+        ul {
             height: 100%;
             list-style-type: none;
             margin: 0;
@@ -166,15 +169,15 @@ onUnmounted(() => {
             li {
                 margin-right: 10px;
 
-                a{
+                a {
                     text-decoration: none;
                     color: var(--black);
                 }
                 a.router-link-active {
-                        color: var(--pink);
-                    }
+                    color: var(--pink);
+                }
 
-                &:last-child{
+                &:last-child {
                     margin-right: 0;
                     margin-left: auto;
                 }
@@ -190,11 +193,11 @@ onUnmounted(() => {
             height: 40px;
             width: 36px;
         }
-        
+
         .container {
             nav {
                 ul {
-                    &.mobile{
+                    &.mobile {
                         display: flex;
                     }
                     &.desktop {
@@ -208,11 +211,11 @@ onUnmounted(() => {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .v-enter-from,
 .v-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
 </style>

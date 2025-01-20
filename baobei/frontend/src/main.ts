@@ -1,24 +1,26 @@
-import '@/assets/main.scss';
+import '@/assets/main.scss'
 
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import { createYmaps } from 'vue-yandex-maps';
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import { createYmaps } from 'vue-yandex-maps'
 
-import App from '@/App.vue';
-import router from '@/router';
+import App from '@/App.vue'
+import router from '@/router'
 
-const app = createApp(App);
-const ymapkey = import.meta.env.VITE_YMAPKEY;
+const app = createApp(App)
+const ymapkey = import.meta.env.VITE_YMAPKEY
 
-app.use(createPinia());
+app.use(createPinia())
 
-if(ymapkey) {
-	app.use(createYmaps({
-		apikey: ymapkey, // API mail - c0mix70ne@yandex.ru
-	}));
-};
+if (ymapkey) {
+    app.use(
+        createYmaps({
+            apikey: ymapkey // API mail - c0mix70ne@yandex.ru
+        })
+    )
+}
 
-app.use(router);
+app.use(router)
 
 // Dynamic titles
 router.afterEach((to) => {
@@ -27,6 +29,6 @@ router.afterEach((to) => {
     } else {
         document.title = 'Baobei' // Default
     }
-});
+})
 
-app.mount('#app');
+app.mount('#app')

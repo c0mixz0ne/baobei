@@ -126,7 +126,10 @@ const submitForm = () => {
         'Ваше имя': studentName.value,
         'Ваш телефон': studentPhone.value,
         'Ваши пожелания': studentWishes.value.length ? studentWishes.value : 'Не указано'
-    }
+    };
+
+    console.log(formData);
+    
 
     // Reset form
     formError.value = false

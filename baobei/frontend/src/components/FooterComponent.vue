@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import ContainerComponent from '@/components/layout/ContainerComponent.vue'
-
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 
 const route = useRoute()
 const isLoginPage = computed(() => {

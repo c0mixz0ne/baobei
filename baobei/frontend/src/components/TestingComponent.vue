@@ -126,28 +126,27 @@ const submitForm = () => {
         'Ваше имя': studentName.value,
         'Ваш телефон': studentPhone.value,
         'Ваши пожелания': studentWishes.value.length ? studentWishes.value : 'Не указано'
-    };
+    }
 
-    console.log(formData);
-    
+    console.log(formData)
 
     // Reset form
     formError.value = false
 
-    typeEducation.value = [];
-    yearsOld.value = [];
-    formatLesson.value = [];
-    durationStudy.value = [];
-    studentName.value = '';
-    studentPhone.value = '';
-    studentWishes.value = '';
+    typeEducation.value = []
+    yearsOld.value = []
+    formatLesson.value = []
+    durationStudy.value = []
+    studentName.value = ''
+    studentPhone.value = ''
+    studentWishes.value = ''
 
     document.querySelectorAll('.check[type=checkbox]:checked').forEach((input: any) => {
-        input.checked = false;
+        input.checked = false
     })
 
     document.querySelectorAll('.check[name=radio]:checked').forEach((input: any) => {
-        input.checked = false;
+        input.checked = false
     })
 }
 
@@ -167,7 +166,7 @@ const validateQuestion = () => {
 <template>
     <section class="testing">
         <ContainerComponent>
-            <form @submit.prevent="submitForm()" class="testing-form">
+            <form class="testing-form" @submit.prevent="submitForm()">
                 <div id="question-1" class="question">
                     <input
                         :value="typeEducation"
@@ -179,10 +178,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-1-1">
                                 <input
-                                    @input="setCheckbox($event, typeEducation, 'Русский язык')"
                                     id="q-1-1"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, typeEducation, 'Русский язык')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Русский язык</span>
@@ -191,10 +190,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-1-2">
                                 <input
-                                    @input="setCheckbox($event, typeEducation, 'Английский язык')"
                                     id="q-1-2"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, typeEducation, 'Английский язык')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Английский язык</span>
@@ -203,10 +202,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-1-3">
                                 <input
-                                    @input="setCheckbox($event, typeEducation, 'Математика')"
                                     id="q-1-3"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, typeEducation, 'Математика')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Математика</span>
@@ -215,12 +214,12 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-1-4">
                                 <input
-                                    @input="
-                                        setCheckbox($event, typeEducation, 'Дошкольная подготовка')
-                                    "
                                     id="q-1-4"
                                     class="check"
                                     type="checkbox"
+                                    @input="
+                                        setCheckbox($event, typeEducation, 'Дошкольная подготовка')
+                                    "
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Дошкольная подготовка</span>
@@ -229,10 +228,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-1-5">
                                 <input
-                                    @input="setCheckbox($event, typeEducation, 'Китайский язык')"
                                     id="q-1-5"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, typeEducation, 'Китайский язык')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Китайский язык</span>
@@ -241,19 +240,19 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-1-6">
                                 <input
-                                    @input="setCheckbox($event, typeEducation, 'Свой вариант')"
                                     id="q-1-6"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, typeEducation, 'Свой вариант')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <div class="custom-wrapper">
                                     <span>Свой вариант</span>
                                     <input
-                                        @blur="customCheckboxHandler($event, typeEducation)"
                                         class="custom"
                                         type="text"
                                         maxlength="250"
+                                        @blur="customCheckboxHandler($event, typeEducation)"
                                     />
                                 </div>
                             </label>
@@ -271,10 +270,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-2-1">
                                 <input
-                                    @input="setCheckbox($event, yearsOld, 'Меньше 5')"
                                     id="q-2-1"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, yearsOld, 'Меньше 5')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Меньше 5</span>
@@ -283,10 +282,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-2-2">
                                 <input
-                                    @input="setCheckbox($event, yearsOld, '5-7 лет')"
                                     id="q-2-2"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, yearsOld, '5-7 лет')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>5-7 лет</span>
@@ -295,10 +294,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-2-3">
                                 <input
-                                    @input="setCheckbox($event, yearsOld, '7-10 лет')"
                                     id="q-2-3"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, yearsOld, '7-10 лет')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>7-10 лет</span>
@@ -307,10 +306,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-2-4">
                                 <input
-                                    @input="setCheckbox($event, yearsOld, '10-14 лет')"
                                     id="q-2-4"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, yearsOld, '10-14 лет')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>10-14 лет</span>
@@ -319,10 +318,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-2-5">
                                 <input
-                                    @input="setCheckbox($event, yearsOld, '14-17 лет')"
                                     id="q-2-5"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, yearsOld, '14-17 лет')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>14-17 лет</span>
@@ -331,10 +330,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-2-6">
                                 <input
-                                    @input="setCheckbox($event, yearsOld, 'Больше 17')"
                                     id="q-2-6"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, yearsOld, 'Больше 17')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Больше 17</span>
@@ -353,10 +352,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-3-1">
                                 <input
-                                    @input="setCheckbox($event, formatLesson, 'Групповые')"
                                     id="q-3-1"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, formatLesson, 'Групповые')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Групповые</span>
@@ -365,10 +364,10 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-3-2">
                                 <input
-                                    @input="setCheckbox($event, formatLesson, 'Индивидуальные')"
                                     id="q-3-2"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, formatLesson, 'Индивидуальные')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Индивидуальные</span>
@@ -377,19 +376,19 @@ const validateQuestion = () => {
                         <li class="checkbox-item">
                             <label for="q-3-3">
                                 <input
-                                    @input="setCheckbox($event, formatLesson, 'Свой вариант')"
                                     id="q-3-3"
                                     class="check"
                                     type="checkbox"
+                                    @input="setCheckbox($event, formatLesson, 'Свой вариант')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <div class="custom-wrapper">
                                     <span>Свой вариант</span>
                                     <input
-                                        @blur="customCheckboxHandler($event, formatLesson)"
                                         class="custom"
                                         type="text"
                                         maxlength="250"
+                                        @blur="customCheckboxHandler($event, formatLesson)"
                                     />
                                 </div>
                             </label>
@@ -407,11 +406,11 @@ const validateQuestion = () => {
                         <li class="radio-item">
                             <label for="q-4-1">
                                 <input
-                                    @input="setRadio($event, durationStudy, 'Пару месяцев')"
                                     id="q-4-1"
                                     class="check"
                                     type="radio"
                                     name="radio"
+                                    @input="setRadio($event, durationStudy, 'Пару месяцев')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Пару месяцев</span>
@@ -420,11 +419,11 @@ const validateQuestion = () => {
                         <li class="radio-item">
                             <label for="q-4-2">
                                 <input
-                                    @input="setRadio($event, durationStudy, 'Пол года')"
                                     id="q-4-2"
                                     class="check"
                                     type="radio"
                                     name="radio"
+                                    @input="setRadio($event, durationStudy, 'Пол года')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Пол года</span>
@@ -433,11 +432,11 @@ const validateQuestion = () => {
                         <li class="radio-item">
                             <label for="q-4-3">
                                 <input
-                                    @input="setRadio($event, durationStudy, 'Год')"
                                     id="q-4-3"
                                     class="check"
                                     type="radio"
                                     name="radio"
+                                    @input="setRadio($event, durationStudy, 'Год')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Год</span>
@@ -446,11 +445,11 @@ const validateQuestion = () => {
                         <li class="radio-item">
                             <label for="q-4-4">
                                 <input
-                                    @input="setRadio($event, durationStudy, 'Больше года')"
                                     id="q-4-4"
                                     class="check"
                                     type="radio"
                                     name="radio"
+                                    @input="setRadio($event, durationStudy, 'Больше года')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <span>Больше года</span>
@@ -459,20 +458,20 @@ const validateQuestion = () => {
                         <li class="radio-item">
                             <label for="q-4-5">
                                 <input
-                                    @input="setRadio($event, durationStudy, 'Свой вариант')"
                                     id="q-4-5"
                                     class="check"
                                     type="radio"
                                     name="radio"
+                                    @input="setRadio($event, durationStudy, 'Свой вариант')"
                                 />
                                 <div class="checkbox-indicator"></div>
                                 <div class="custom-wrapper">
                                     <span>Свой вариант</span>
                                     <input
-                                        @blur="customRadioHandler($event, durationStudy)"
                                         class="custom"
                                         type="text"
                                         maxlength="250"
+                                        @blur="customRadioHandler($event, durationStudy)"
                                     />
                                 </div>
                             </label>
@@ -482,33 +481,33 @@ const validateQuestion = () => {
                 <div class="question">
                     <p class="question-title">Ваше имя</p>
                     <input
-                        @input="formatNameHandler"
+                        v-model="studentName"
                         name="name"
                         class="long-input"
-                        v-model="studentName"
                         type="text"
+                        @input="formatNameHandler"
                     />
                     <label v-if="errorName" for="name">{{ errorName }}</label>
                 </div>
                 <div class="question">
                     <p class="question-title">Ваш телефон</p>
                     <input
-                        @input="formatPhoneHandler"
+                        v-model="studentPhone"
                         name="phone"
                         class="long-input"
-                        v-model="studentPhone"
                         type="text"
+                        @input="formatPhoneHandler"
                     />
                     <label v-if="errorPhone" for="phone">{{ errorPhone }}</label>
                 </div>
                 <div class="question">
                     <p class="question-title">Ваши пожелания</p>
                     <input
-                        class="long-input"
-                        @input="studentWishesComputed"
                         v-model="studentWishes"
+                        class="long-input"
                         type="text"
                         maxlength="250"
+                        @input="studentWishesComputed"
                     />
                 </div>
                 <ButtonComponent type="submit">Отправить форму</ButtonComponent>

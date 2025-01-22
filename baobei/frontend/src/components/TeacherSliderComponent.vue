@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import 'vue3-carousel/dist/carousel.css'
-import ContainerComponent from './layout/ContainerComponent.vue'
 import { Carousel, Slide } from 'vue3-carousel'
 import { ref } from 'vue'
+import ContainerComponent from './layout/ContainerComponent.vue'
 
 import teacher0 from '@/assets/images/av.jpg'
 import teacher1 from '@/assets/images/ed.jpg'
@@ -98,7 +98,7 @@ const prev = () => carouselRef.value.prev()
 
 <template>
     <ContainerComponent class="slider-container">
-        <Carousel class="cr-custom" v-bind="config" ref="carouselRef" v-model="currentSlide">
+        <Carousel v-bind="config" ref="carouselRef" v-model="currentSlide" class="cr-custom">
             <Slide v-for="card in cards" :key="card">
                 <div class="carousel__item">
                     <img :src="card.photo" alt="Аватар" />

@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import ProgramContainerComponent from '@/components/layout/ProgramContainerComponent.vue'
 import WelcomeComponent from '@/components/WelcomeComponent.vue'
 import AboutProgramComponent from '@/components/AboutProgramComponent.vue'
 import ProgramComponent from '@/components/ProgramComponent.vue'
 import ConnectBlock from '@/components/ConnectBlock.vue'
 import ModalFormComponent from '@/components/ModalFormComponent.vue'
-
-import { computed } from 'vue'
 
 import { useModalStore } from '@/stores/modal'
 

@@ -51,7 +51,7 @@ const teachers = [
         <ContainerComponent>
             <div :class="$style.carousel">
                 <div :class="$style.inner">
-                    <div class="slide" v-for="(teacher, id) in teachers" :key="id">
+                    <div v-for="(teacher, id) in teachers" :key="id" class="slide">
                         {{ teacher.name }}
                     </div>
                 </div>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import ContainerComponent from '@/components/layout/ContainerComponent.vue'
 import ButtonComponent from '@/components/ButtonComponent.vue'
 
-import { ref } from 'vue'
 import { formatName, formatPhone } from '@/helpers/formatInput'
 import { validateName, validatePhone } from '@/helpers/validateInput'
 
@@ -34,28 +34,28 @@ const formatPhoneHandler = () => {
 }
 </script>
 <template>
-    <section class="form" id="form">
+    <section id="form" class="form">
         <ContainerComponent>
             <h2>Запишитесь на пробное занятие и мастер-классы!</h2>
             <h3>Оставьте свои контактные данные, и наш администратор свяжется с вами</h3>
             <form @submit.prevent="submitForm()">
                 <div class="input-wrapper">
                     <input
-                        name="name"
                         v-model="name"
-                        @input="formatNameHandler"
+                        name="name"
                         placeholder="Ваше имя"
                         type="text"
+                        @input="formatNameHandler"
                     />
                     <label v-if="errorName" for="name">{{ errorName }}</label>
                 </div>
                 <div class="input-wrapper">
                     <input
-                        name="phone"
                         v-model="phone"
-                        @input="formatPhoneHandler"
+                        name="phone"
                         placeholder="+7 (999) 999-99-99"
                         type="tel"
+                        @input="formatPhoneHandler"
                     />
                     <label v-if="errorPhone" for="phone">{{ errorPhone }}</label>
                 </div>

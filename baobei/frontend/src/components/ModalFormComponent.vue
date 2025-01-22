@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ButtonComponent from '@/components/ButtonComponent.vue'
 import { onMounted, onUnmounted, ref } from 'vue'
+import ButtonComponent from '@/components/ButtonComponent.vue'
 import { formatName, formatPhone } from '@/helpers/formatInput'
 import { validateName, validatePhone } from '@/helpers/validateInput'
 import { useModalStore } from '@/stores/modal'
@@ -57,21 +57,21 @@ const formatPhoneHandler = () => {
             <form @submit.prevent="submitForm()">
                 <div class="input-wrapper">
                     <input
-                        name="name"
                         v-model="name"
-                        @input="formatNameHandler"
+                        name="name"
                         placeholder="Ваше имя"
                         type="text"
+                        @input="formatNameHandler"
                     />
                     <label v-if="errorName" for="name">{{ errorName }}</label>
                 </div>
                 <div class="input-wrapper">
                     <input
-                        name="phone"
                         v-model="phone"
-                        @input="formatPhoneHandler"
+                        name="phone"
                         placeholder="+7 (999) 999-99-99"
                         type="tel"
+                        @input="formatPhoneHandler"
                     />
                     <label v-if="errorPhone" for="phone">{{ errorPhone }}</label>
                 </div>

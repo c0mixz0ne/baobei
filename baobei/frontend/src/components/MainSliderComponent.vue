@@ -24,6 +24,12 @@ export default {
             ]
         }
     },
+    mounted() {
+        this.startAutoPlay()
+    },
+    beforeUnmount() {
+        this.stopAutoPlay()
+    },
     methods: {
         nextSlide() {
             this.currentIndex = (this.currentIndex + 1) % this.slides.length
@@ -40,12 +46,6 @@ export default {
         buttonClick() {
             smoothScroll('#form')
         }
-    },
-    mounted() {
-        this.startAutoPlay()
-    },
-    beforeUnmount() {
-        this.stopAutoPlay()
     }
 }
 </script>
@@ -53,8 +53,8 @@ export default {
     <div class="slider" @mouseenter="stopAutoPlay" @mouseleave="startAutoPlay">
         <transition name="fade">
             <div
-                class="slide"
                 :key="currentIndex"
+                class="slide"
                 :style="{ backgroundImage: slides[currentIndex].background }"
             >
                 <div class="content">
@@ -64,8 +64,8 @@ export default {
                 </div>
             </div>
         </transition>
-        <button @click="prevSlide" class="nav-button prev">‹</button>
-        <button @click="nextSlide" class="nav-button next">›</button>
+        <button class="nav-button prev" @click="prevSlide">‹</button>
+        <button class="nav-button next" @click="nextSlide">›</button>
     </div>
 </template>
 <style lang="scss" scoped>

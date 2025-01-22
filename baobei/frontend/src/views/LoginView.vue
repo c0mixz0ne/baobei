@@ -10,7 +10,7 @@ const login = () => {
             <form @submit.prevent>
                 <input placeholder="E-mail" type="text" />
                 <input placeholder="Пароль" type="password" />
-                <button @click="login" type="submit">Войти</button>
+                <button type="submit" @click="login">Войти</button>
             </form>
         </div>
     </section>

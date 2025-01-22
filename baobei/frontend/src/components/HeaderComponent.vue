@@ -56,7 +56,7 @@ onUnmounted(() => {
                 </ul>
                 <ul class="mobile">
                     <li>
-                        <button @click="toggleMobileMenu" class="burger-menu">
+                        <button class="burger-menu" @click="toggleMobileMenu">
                             <svg v-if="!mobileMenuIsOpen" viewBox="0 0 50 50">
                                 <path
                                     d="M 0 9 L 0 11 L 50 11 L 50 9 Z M 0 24 L 0 26 L 50 26 L 50 24 Z M 0 39 L 0 41 L 50 41 L 50 39 Z"
@@ -76,16 +76,16 @@ onUnmounted(() => {
             <div v-if="mobileMenuIsOpen" class="mobile-menu">
                 <ul>
                     <li>
-                        <RouterLink @click="toggleMobileMenu" to="/">Главная</RouterLink>
+                        <RouterLink to="/" @click="toggleMobileMenu">Главная</RouterLink>
                     </li>
                     <li>
-                        <RouterLink @click="toggleMobileMenu" to="/program">Программы</RouterLink>
+                        <RouterLink to="/program" @click="toggleMobileMenu">Программы</RouterLink>
                     </li>
                     <li>
-                        <RouterLink @click="toggleMobileMenu" to="/group">Набор</RouterLink>
+                        <RouterLink to="/group" @click="toggleMobileMenu">Набор</RouterLink>
                     </li>
                     <li>
-                        <RouterLink @click="toggleMobileMenu" to="/login">Войти</RouterLink>
+                        <RouterLink to="/login" @click="toggleMobileMenu">Войти</RouterLink>
                     </li>
                 </ul>
             </div>

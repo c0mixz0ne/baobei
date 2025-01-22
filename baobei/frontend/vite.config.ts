@@ -83,8 +83,8 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@/assets/_mixins.scss";`, // Mixins
+	  scss: {
+        additionalData: `@use "@/assets/_mixins.scss" as *;`, // Mixins
       },
     },
   },
